@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Me from "../assets/Me.png";
+import resume from "../assets/Curriculum Vitae.pdf";
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [typedText, setTypedText] = useState("");
@@ -111,14 +112,14 @@ const HeroSection = () => {
                 >
                   View My Work
                 </a>
-              {/* <a
+              <a
   href={resume}
   target="_blank"
   rel="noopener noreferrer"
   className="backdrop-blur-md bg-white/5 text-white px-6 sm:px-8 py-3 sm:py-3 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 text-sm sm:text-base flex items-center justify-center"
 >
   View CV
-</a> */}
+</a>
 
               </div>
             </div>
