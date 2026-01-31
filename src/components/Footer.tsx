@@ -1,6 +1,6 @@
 import { Github, Linkedin, Twitter, Mail, ExternalLink, ArrowUp } from 'lucide-react';
 import { useState } from 'react';
-import resume from '../assets/CV Resume.pdf';
+import resume from '../assets/Curriculum Vitae.pdf';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [showScroll, setShowScroll] = useState(false);
