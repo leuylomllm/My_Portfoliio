@@ -43,7 +43,7 @@ const HeroSection = () => {
   });
 
   return (
-    <section
+    <section id="home"
       style={{
         background: "#0A0A0F",
         minHeight: "100vh",

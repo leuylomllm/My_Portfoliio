@@ -23,12 +23,12 @@ function App() {
 
       {/* Each section handles its own padding internally */}
       <main>
-        <HeroSection />
-        <TechStack />
-        <About />
-        <Skill />
-        <Project />
-        <Contact />
+        <HeroSection id="home" />
+        <TechStack id="skills" />
+        <About id="about" />
+        <Skill id="skill" />
+        <Project id="projects" />
+        <Contact id="contact" />
         <Footer />
       </main>
     </div>

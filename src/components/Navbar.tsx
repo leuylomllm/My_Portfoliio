@@ -16,15 +16,13 @@ const Navbar = () => {
 
   return (
     <>
-  
-
       <header className={`nav-wrap ${scrolled ? "scrolled" : ""}`}>
         <nav
           className={`nav-inner ${scrolled ? "scrolled" : ""}`}
           style={{ position: "relative" }}
         >
           {/* Logo */}
-          <a href="#home" className="nav-logo">
+          <a href="#" className="nav-logo">
             <div className="nav-logo-mark">L</div>
             <span className="nav-logo-text">Lom Leuy</span>
           </a>
@@ -48,7 +46,13 @@ const Navbar = () => {
           <a href="#contact" className="nav-cta">
             Hire Me
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+              <path
+                d="M1 11L11 1M11 1H4M11 1v7"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </a>
 
@@ -58,7 +62,9 @@ const Navbar = () => {
             onClick={() => setIsOpen((v) => !v)}
             aria-label="Toggle menu"
           >
-            <span /><span /><span />
+            <span />
+            <span />
+            <span />
           </button>
 
           {/* Mobile dropdown */}
@@ -81,7 +87,10 @@ const Navbar = () => {
                     <a
                       href={`#${item.toLowerCase()}`}
                       className={active === item ? "active" : ""}
-                      onClick={() => { setActive(item); setIsOpen(false); }}
+                      onClick={() => {
+                        setActive(item);
+                        setIsOpen(false);
+                      }}
                     >
                       {item}
                     </a>
@@ -89,10 +98,20 @@ const Navbar = () => {
                 ))}
                 <div className="nav-mobile-divider" />
                 <li>
-                  <a href="#contact" className="nav-mobile-cta" onClick={() => setIsOpen(false)}>
+                  <a
+                    href="#contact"
+                    className="nav-mobile-cta"
+                    onClick={() => setIsOpen(false)}
+                  >
                     Hire Me
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path
+                        d="M1 11L11 1M11 1H4M11 1v7"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </a>
                 </li>

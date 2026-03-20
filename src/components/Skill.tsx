@@ -177,7 +177,7 @@ const allSkills = [
     icon: <SiPostman />,
     color: "#FB923C",
     category: "Tools",
-    level: "Intermediate",
+    level: "Beginner",
   },
   {
     name: "Windsurf",
