@@ -13,7 +13,7 @@ const SKILLS = [
 const STATS = [
   { number: "1+", label: "Years Experience" },
   // { number: "15+", label: "Projects Built"   },
-  { number: "10+", label: "Technologies" },
+  { number: "5+", label: "Technologies" },
 ];
 
 export default function About() {
