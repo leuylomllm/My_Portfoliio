@@ -1,296 +1,425 @@
 import { motion } from "framer-motion";
-import {
-  Github,
-  Mail,
-  Send,
-  MapPin,
-  Phone,
-} from "lucide-react";
-import React, { useState } from "react";
+import { Github, Mail, Send, MapPin, Phone, Facebook } from "lucide-react";
+import React, { useState, useEffect } from "react";
 
 const Contact = () => {
-  const [showScroll, setShowScroll] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-  const [formStatus, setFormStatus] = useState("");
-
-  const checkScrollTop = () => {
-    if (!showScroll && window.pageYOffset > 400) {
-      setShowScroll(true);
-    } else if (showScroll && window.pageYOffset <= 400) {
-      setShowScroll(false);
-    }
-  };
-
-  window.addEventListener("scroll", checkScrollTop);
+  const [formStatus, setFormStatus] = useState<"" | "sending" | "success">("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("sending");
-
     setTimeout(() => {
       setFormStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setFormStatus(""), 3000);
+      setTimeout(() => setFormStatus(""), 3500);
     }, 1500);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const contactItems = [
+    {
+      icon: <Mail size={17} />,
+      label: "Email",
+      value: "leuylom022@gmail.com",
+      href: "mailto:leuylom022@gmail.com",
+    },
+    {
+      icon: <Phone size={17} />,
+      label: "Phone",
+      value: "097 58 94 543",
+      href: "tel:+85597589543",
+    },
+    {
+      icon: <MapPin size={17} />,
+      label: "Location",
+      value: "Siem Reap, Cambodia",
+      href: null,
+    },
+  ];
+
   return (
-    <motion.section id="contact"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className=" text-white py-20 px-4 relative overflow-hidden"
+    <section
+      id="contact"
+      style={{
+        background: "#0A0A0F",
+        padding: "100px 24px",
+        fontFamily: "'DM Sans', sans-serif",
+      }}
     >
-      <div className="container mx-auto max-w-7xl relative z-10">
+      <div style={{ maxWidth: 1040, margin: "0 auto" }}>
+        {/* Header */}
         <motion.div
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: -16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          style={{ textAlign: "center", marginBottom: 64 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white">
+          <p
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 12,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "#38BDF8",
+              fontWeight: 500,
+              marginBottom: 12,
+            }}
+          >
+            Contact
+          </p>
+          <h2
+            style={{
+              fontFamily: "'Syne', sans-serif",
+              fontSize: "clamp(30px, 4.5vw, 48px)",
+              fontWeight: 800,
+              color: "#F1F5F9",
+              lineHeight: 1.1,
+              margin: 0,
+              letterSpacing: "-0.02em",
+            }}
+          >
             Get In Touch
-          </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Have a project in mind or just want to say hello? Feel free to reach
-            out. I'd love to hear from you!
+          </h2>
+          <div className="divider-line" />
+          <p
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              color: "#475569",
+              fontSize: 15,
+              maxWidth: 400,
+              margin: "18px auto 0",
+              lineHeight: 1.75,
+              fontWeight: 300,
+            }}
+          >
+            Have a project in mind or just want to say hello? I'd love to hear
+            from you.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        {/* Grid */}
+        <div
+          className="contact-grid"
+          style={{ display: "flex", gap: 40, alignItems: "flex-start" }}
+        >
+          {/* LEFT — Info */}
           <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8">
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              flex: "0 0 320px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 24,
+            }}
+          >
             <div>
-              <h2 className="text-3xl font-bold mb-6 text-white">Let's Talk</h2>
-              <p className="text-gray-400 leading-relaxed mb-8">
-                I'm always open to discussing new projects, creative ideas, or
+              <h3
+                style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: 22,
+                  fontWeight: 800,
+                  color: "#F1F5F9",
+                  margin: "0 0 8px",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Let's Talk
+              </h3>
+              <p
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 14,
+                  color: "#475569",
+                  lineHeight: 1.75,
+                  fontWeight: 300,
+                  margin: 0,
+                }}
+              >
+                I'm always open to new projects, creative ideas, or
                 opportunities to be part of your vision.
               </p>
             </div>
 
-            <div className="space-y-6">
-              <motion.div
-                whileHover={{ x: 10 }}
-                className="flex items-center gap-4 group cursor-pointer"
-              >
-                <div className="w-14 h-14 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
-                  <Mail className="text-purple-400" size={24} />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">Email</p>
-                  <p className="text-white font-medium">leuylom022@gmail.com</p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ x: 10 }}
-                className="flex items-center gap-4 group cursor-pointer"
-              >
-                <div className="w-14 h-14 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
-                  <Phone className="text-purple-400" size={24} />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">Phone</p>
-                  <p className="text-white font-medium">097 58 94 543</p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ x: 10 }}
-                className="flex items-center gap-4 group cursor-pointer"
-              >
-                <div className="w-14 h-14 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
-                  <MapPin className="text-purple-400" size={24} />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">Location</p>
-                  <p className="text-white font-medium">Siem Reap, Cambodia</p>
-                </div>
-              </motion.div>
+            {/* Contact items */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {contactItems.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 + i * 0.07, duration: 0.4 }}
+                >
+                  {item.href ? (
+                    <a href={item.href} className="contact-info-item">
+                      <div className="contact-info-icon">{item.icon}</div>
+                      <div>
+                        <p
+                          style={{
+                            fontFamily: "'DM Sans', sans-serif",
+                            fontSize: 11,
+                            color: "#334155",
+                            fontWeight: 500,
+                            letterSpacing: "0.08em",
+                            textTransform: "uppercase",
+                            margin: "0 0 2px",
+                          }}
+                        >
+                          {item.label}
+                        </p>
+                        <p
+                          style={{
+                            fontFamily: "'DM Sans', sans-serif",
+                            fontSize: 14,
+                            color: "#CBD5E1",
+                            fontWeight: 400,
+                            margin: 0,
+                          }}
+                        >
+                          {item.value}
+                        </p>
+                      </div>
+                    </a>
+                  ) : (
+                    <div
+                      className="contact-info-item"
+                      style={{ cursor: "default" }}
+                    >
+                      <div className="contact-info-icon">{item.icon}</div>
+                      <div>
+                        <p
+                          style={{
+                            fontFamily: "'DM Sans', sans-serif",
+                            fontSize: 11,
+                            color: "#334155",
+                            fontWeight: 500,
+                            letterSpacing: "0.08em",
+                            textTransform: "uppercase",
+                            margin: "0 0 2px",
+                          }}
+                        >
+                          {item.label}
+                        </p>
+                        <p
+                          style={{
+                            fontFamily: "'DM Sans', sans-serif",
+                            fontSize: 14,
+                            color: "#CBD5E1",
+                            fontWeight: 400,
+                            margin: 0,
+                          }}
+                        >
+                          {item.value}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              ))}
             </div>
 
-            <div className="pt-8">
-              <h3 className="text-xl font-semibold mb-4 text-white">
-                Follow Me
-              </h3>
-              <div className="flex gap-4">
-                {[
-                  { Icon: Github, href: "https://github.com/leuy-llm", color: "hover:text-gray-300" },
-                 
-                ].map(({ Icon, href, color }, idx) => (
-                  <motion.a
-                    key={idx}
-                    href={href}
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    className={`w-12 h-12 rounded-lg bg-slate-800/50 border border-slate-700/50 flex items-center justify-center text-gray-400 ${color} transition-colors`}
-                  >
-                    <Icon size={20} />
-                  </motion.a>
-                ))}
+            {/* Social */}
+            <div>
+              <p
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 11,
+                  color: "#334155",
+                  fontWeight: 500,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  marginBottom: 12,
+                }}
+              >
+                Find Me Online
+              </p>
+              <div style={{ display: "flex", gap: 8 }}>
+                <a
+                  href="https://github.com/leuy-llm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-btn"
+                >
+                  <Github size={16} />
+                </a>
+                <a
+                  href="https://www.facebook.com/leuy.llm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-btn"
+                >
+                  <Facebook size={16} />
+                </a>
               </div>
             </div>
+
+            {/* Availability card */}
           </motion.div>
 
+          {/* RIGHT — Form */}
           <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{
+              duration: 0.55,
+              ease: [0.22, 1, 0.36, 1],
+              delay: 0.1,
+            }}
+            style={{ flex: 1, minWidth: 0 }}
           >
-            <div className="space-y-6 bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Your Name
-                </label>
-               <input type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                disabled
-                className="
-                  w-full px-4 py-3
-                  bg-slate-900/50
-                  border border-slate-700/50
-                  rounded-lg
-                  text-white
-                  placeholder-gray-500
-                  focus:outline-none
-                  focus:border-purple-500
-                  transition-colors
-
-                  disabled:bg-slate-800/70
-                  disabled:text-gray-400
-                  disabled:placeholder-gray-600
-                  disabled:border-slate-600
-                  disabled:cursor-not-allowed
-                  disabled:opacity-60
-                "
-                placeholder="John Doe"
-              />
-
+            <div
+              style={{
+                background: "#111118",
+                border: "1px solid #1E1E2E",
+                borderRadius: 16,
+                padding: "32px 28px",
+                display: "flex",
+                flexDirection: "column",
+                gap: 20,
+              }}
+            >
+              {/* Name + Email row */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: 16,
+                }}
+              >
+                <div className="contact-field-wrap">
+                  <label className="contact-label">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Lom Leuy"
+                    className="contact-input"
+                  />
+                </div>
+                <div className="contact-field-wrap">
+                  <label className="contact-label">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
+                    className="contact-input"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Your Email
-                </label>
+              {/* Subject */}
+              <div className="contact-field-wrap">
+                <label className="contact-label">Subject</label>
                 <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                disabled
-                className="
-                  w-full px-4 py-3
-                  bg-slate-900/50
-                  border border-slate-700/50
-                  rounded-lg
-                  text-white
-                  placeholder-gray-500
-                  focus:outline-none
-                  focus:border-purple-500
-                  transition-colors
-
-                  disabled:bg-slate-800/70
-                  disabled:text-gray-400
-                  disabled:placeholder-gray-600
-                  disabled:border-slate-600
-                  disabled:cursor-not-allowed
-                  disabled:opacity-60
-                "
-                placeholder="john@example.com"
-              />
-
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Subject
-                </label>
-                <input
-                        type="text"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        disabled
-                        className="
-                        w-full px-4 py-3
-                        bg-slate-900/50
-                        border border-slate-700/50
-                        rounded-lg
-                        text-white
-                        placeholder-gray-500
-                        focus:outline-none
-                        focus:border-purple-500
-                        transition-colors
-
-                        disabled:bg-slate-800/70
-                        disabled:text-gray-400
-                        disabled:placeholder-gray-600
-                        disabled:border-slate-600
-                        disabled:cursor-not-allowed
-                        disabled:opacity-60
-                        "
-                        placeholder="Project Inquiry"
-                    />
-
-              </div>
-
-              <div> 
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Message
-                </label>
-                <textarea 
-                  disabled
-                  name="message"
-                  value={formData.message}
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
                   onChange={handleChange}
-                  rows={5}
-                  className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors resize-none"
-                  placeholder="Tell me about your project..."
+                  placeholder="Project Inquiry"
+                  className="contact-input"
                 />
               </div>
 
+              {/* Message */}
+              <div className="contact-field-wrap">
+                <label className="contact-label">Message</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={6}
+                  placeholder="Tell me about your project or idea..."
+                  className="contact-input"
+                />
+              </div>
+
+              {/* Submit */}
               <motion.button
-              
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleSubmit}
-                disabled
-                className="w-full py-4  bg-green-400/50 border border-green-400 cursor-pointer rounded-lg font-semibold text-white flex items-center justify-center gap-2 hover:from-purple-600 hover:to-pink-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={formStatus === "sending"}
+                className={`contact-submit ${formStatus}`}
               >
                 {formStatus === "sending" ? (
-                  <span>Sending...</span>
+                  <>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      style={{ animation: "spin 0.8s linear infinite" }}
+                    >
+                      <circle
+                        cx="8"
+                        cy="8"
+                        r="6"
+                        stroke="#475569"
+                        strokeWidth="2"
+                        strokeDasharray="28"
+                        strokeDashoffset="10"
+                      />
+                    </svg>
+                    <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+                    Sending...
+                  </>
                 ) : formStatus === "success" ? (
-                  <span>Message Sent! ✓</span>
+                  <>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path
+                        d="M3 8l4 4 6-6"
+                        stroke="#4ADE80"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    Message sent!
+                  </>
                 ) : (
                   <>
-                    <span>Send Message</span>
-                    <Send size={18} />
+                    Send Message
+                    <Send size={14} />
                   </>
                 )}
               </motion.button>
+
+              <p
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 12,
+                  color: "#2A2A3E",
+                  textAlign: "center",
+                  margin: 0,
+                  fontWeight: 400,
+                }}
+              >
+                I typically reply within 24 hours.
+              </p>
             </div>
           </motion.div>
         </div>
       </div>
-
-      
-    </motion.section>
+    </section>
   );
 };
 

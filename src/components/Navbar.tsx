@@ -1,79 +1,107 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MenuIcon, XIcon } from "lucide-react";
+
+const NAV_ITEMS = ["Home", "About", "Skills", "Projects", "Contact"];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const menuItems = ["Home", "About", "Skills", "Projects", "Contact"];
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("Home");
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="flex items-center justify-between bg-[#0f0f0f] border border-gray-700 rounded-full z-50 px-6 py-3 w-[90%] max-w-6xl mx-auto shadow-sm relative">
-      {/* Left Section: Logo */}
-      <div className="flex items-center space-x-3">
-        <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-tr from-purple-500 to-pink-500 rounded-md shadow-md">
-          <span className="text-white text-2xl font-extrabold">P</span>
-        </div>
-        <h1 className="text-white text-lg font-semibold tracking-wide">
-          Portfolio
-        </h1>
-      </div>
+    <>
+  
 
-      {/* Center Section: Links (Desktop) */}
-      <ul className="hidden md:flex space-x-8 text-white font-normal tracking-wider">
-        {menuItems.map((item, index) => (
-          <li key={index}>
-            <a
-              href={`#${item.toLowerCase()}`}
-              className="cursor-pointer hover:text-purple-400 transition-colors"
-            >
-              {item}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <header className={`nav-wrap ${scrolled ? "scrolled" : ""}`}>
+        <nav
+          className={`nav-inner ${scrolled ? "scrolled" : ""}`}
+          style={{ position: "relative" }}
+        >
+          {/* Logo */}
+          <a href="#home" className="nav-logo">
+            <div className="nav-logo-mark">L</div>
+            <span className="nav-logo-text">Lom Leuy</span>
+          </a>
 
-      {/* Right Section: Button (Desktop) */}
-      {/* <button className="hidden md:block bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold px-4 py-1.5 rounded-full transition-all">
-        Hired Me
-      </button> */}
-
-      {/* Mobile Hamburger */}
-      <div className="md:hidden flex items-center">
-        <button onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? (
-            <XIcon className="w-6 h-6 text-white" />
-          ) : (
-            <MenuIcon className="w-6 h-6 text-white" />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.ul
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="absolute top-full left-0 w-full font-semibold bg-[#0f0f0f]  border-t border-gray-700 rounded-3xl flex flex-col items-center space-y-4 py-4 md:hidden"
-          >
-            {menuItems.map((item, index) => (
-              <li
-                key={index}
-                className="cursor-pointer font-semibold text-white hover:text-purple-400 transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {item}
+          {/* Desktop links */}
+          <ul className="nav-links">
+            {NAV_ITEMS.map((item) => (
+              <li key={item} className="nav-link-item">
+                <a
+                  href={`#${item.toLowerCase()}`}
+                  className={active === item ? "active" : ""}
+                  onClick={() => setActive(item)}
+                >
+                  {item}
+                </a>
               </li>
             ))}
-            {/* <button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold px-4 py-1.5 rounded-full transition-all">
-              Hired Me
-            </button> */}
-          </motion.ul>
-        )}
-      </AnimatePresence>
-    </nav>
+          </ul>
+
+          {/* CTA */}
+          <a href="#contact" className="nav-cta">
+            Hire Me
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+
+          {/* Hamburger */}
+          <button
+            className={`nav-hamburger ${isOpen ? "open" : ""}`}
+            onClick={() => setIsOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            <span /><span /><span />
+          </button>
+
+          {/* Mobile dropdown */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.ul
+                className="nav-mobile"
+                initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.97 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+              >
+                {NAV_ITEMS.map((item, i) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.04, duration: 0.2 }}
+                  >
+                    <a
+                      href={`#${item.toLowerCase()}`}
+                      className={active === item ? "active" : ""}
+                      onClick={() => { setActive(item); setIsOpen(false); }}
+                    >
+                      {item}
+                    </a>
+                  </motion.li>
+                ))}
+                <div className="nav-mobile-divider" />
+                <li>
+                  <a href="#contact" className="nav-mobile-cta" onClick={() => setIsOpen(false)}>
+                    Hire Me
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                </li>
+              </motion.ul>
+            )}
+          </AnimatePresence>
+        </nav>
+      </header>
+    </>
   );
 };
 

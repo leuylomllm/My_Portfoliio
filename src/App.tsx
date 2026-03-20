@@ -9,25 +9,27 @@ import Contact from "./components/Contact";
 import Skill from "./components/Skill";
 
 function App() {
-
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
-      {/* Give some top padding to ensure navbar is not touching the browser chrome */}
-      <header className="pt-5">
-        <Navbar />
-      </header>
+    <div
+      style={{
+        background: "#0A0A0F",
+        minHeight: "100vh",
+        color: "white",
+        overflowX: "hidden", // prevent horizontal scroll on mobile
+      }}
+    >
+      {/* Navbar is fixed-positioned — no wrapper padding needed */}
+      <Navbar />
 
-      {/* page content placeholder */}
-      <main className="p-6">
-      <HeroSection />
-      <TechStack />
-      <About />
-      <Skill />
-
-      <Project />
-      <Contact />
-        {/* content */}
-      <Footer />
+      {/* Each section handles its own padding internally */}
+      <main>
+        <HeroSection />
+        <TechStack />
+        <About />
+        <Skill />
+        <Project />
+        <Contact />
+        <Footer />
       </main>
     </div>
   );
