@@ -179,7 +179,8 @@ export default function About() {
           .about-grid { flex-direction: column !important; }
           .about-img-side { align-items: center !important; }
           .about-badge { left: 12px !important; }
-          .about-corner-tag { right: 12px !important; }
+          .about-corner-tag { right: 12px !important; 
+          }
         }
       `}</style>
 
@@ -233,10 +234,8 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            style={{ flex: 1, minWidth: 0 }}
-          >
+            style={{ flex: 1, minWidth: 0 }}>
             <div className="divider-line" />
-
             <p
               style={{
                 fontFamily: "'DM Sans', sans-serif",

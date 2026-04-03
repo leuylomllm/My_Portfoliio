@@ -1,33 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaReact,
-  FaVuejs,
-  FaNodeJs,
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-} from "react-icons/fa";
-import {
-  SiExpress,
-  SiLaravel,
-  SiVite,
-  SiBootstrap,
-  SiGit,
-  SiTailwindcss,
-  SiPrimevue,
-  SiMysql,
-  SiMongodb,
-  SiTypescript,
-  SiPostman,
-} from "react-icons/si";
+import { FaReact, FaVuejs, FaNodeJs, FaHtml5, FaCss3Alt, FaJs } from "react-icons/fa";
+import { SiExpress, SiLaravel, SiVite, SiBootstrap, SiGit, SiTailwindcss, SiPrimevue, SiMysql, SiMongodb, SiTypescript, SiPostman } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { Cloud } from "lucide-react";
-import {
-  PiMicrosoftWordLogoFill,
-  PiMicrosoftExcelLogoFill,
-  PiMicrosoftPowerpointLogoFill,
-} from "react-icons/pi";
+import { PiMicrosoftWordLogoFill, PiMicrosoftExcelLogoFill, PiMicrosoftPowerpointLogoFill } from "react-icons/pi";
 
 const LEVEL_WIDTH = { Beginner: "30%", Intermediate: "62%", Advanced: "90%" };
 const LEVEL_COLOR = {
