@@ -110,28 +110,28 @@ const projects: Project[] = [
       Image.movie5,
       Image.movie6,
     ],
-    demo: "https://movies-two-lime.vercel.app/",
+    // demo: "https://movies-two-lime.vercel.app/",
     code: "https://github.com/leuy-llm/Movie",
     category: "web",
   },
-//   {
-//     id: 4,
-//     title: "Ecommerce",
-//     subtitle: "E-Commerce Storefront",
-//     description:
-//       "A modern e-commerce storefront with dynamic product listings, Google Maps integration for store locations, and a focus on responsive design and accessibility.",
-//     technologies: ["React", "Tailwind CSS", "Vite", "TypeScript", "F API"],
-//     highlights: [
-//       "Dynamic destination listings",
-//       "Google Maps integration",
-//       "Responsive layouts",
-//       "Accessibility & smooth navigation",
-//     ],
-//     image: Image.tour1,
-//     demo: "https://tour-sable.vercel.app/",
-//     code: "https://github.com/leuy-llm/tour",
-//     category: "webapp",
-//   },
+  //   {
+  //     id: 4,
+  //     title: "Ecommerce",
+  //     subtitle: "E-Commerce Storefront",
+  //     description:
+  //       "A modern e-commerce storefront with dynamic product listings, Google Maps integration for store locations, and a focus on responsive design and accessibility.",
+  //     technologies: ["React", "Tailwind CSS", "Vite", "TypeScript", "F API"],
+  //     highlights: [
+  //       "Dynamic destination listings",
+  //       "Google Maps integration",
+  //       "Responsive layouts",
+  //       "Accessibility & smooth navigation",
+  //     ],
+  //     image: Image.tour1,
+  //     demo: "https://tour-sable.vercel.app/",
+  //     code: "https://github.com/leuy-llm/tour",
+  //     category: "webapp",
+  //   },
   {
     id: 4,
     title: "TastyHub",
@@ -146,12 +146,8 @@ const projects: Project[] = [
       "Responsive recipe grid",
     ],
     image: Image.rcipe1,
-    images: [
-        Image.rcipe1,
-            Image.recipe3,
-            Image.recipe4,
-    ],
-    demo: "https://reciep-finder.vercel.app/",
+    images: [Image.rcipe1, Image.recipe3, Image.recipe4],
+    // demo: "https://reciep-finder.vercel.app/",
     code: "https://github.com/leuylomllm/Reciep_Finder",
     category: "webapp",
   },
@@ -199,8 +195,6 @@ export default function Project() {
   const current = projects[currentIndex];
   const images = current.images ?? [current.image];
   const currentImg = images[imgIndex];
-
-
 
   const handleNext = () => go((currentIndex + 1) % projects.length, 1);
   const handlePrev = () =>
@@ -397,10 +391,13 @@ export default function Project() {
                         </AnimatePresence>
                         {/* LEFT */}
                         <button
-                         onClick={() => {
-  setImgDirection(-1);
-  setImgIndex((prev) => (prev - 1 + images.length) % images.length);
-}}
+                          onClick={() => {
+                            setImgDirection(-1);
+                            setImgIndex(
+                              (prev) =>
+                                (prev - 1 + images.length) % images.length,
+                            );
+                          }}
                           style={{
                             position: "absolute",
                             top: "50%",
@@ -420,10 +417,10 @@ export default function Project() {
 
                         {/* RIGHT */}
                         <button
-                         onClick={() => {
-  setImgDirection(1);
-  setImgIndex((prev) => (prev + 1) % images.length);
-}}
+                          onClick={() => {
+                            setImgDirection(1);
+                            setImgIndex((prev) => (prev + 1) % images.length);
+                          }}
                           style={{
                             position: "absolute",
                             top: "50%",
@@ -454,7 +451,6 @@ export default function Project() {
                           <div
                             key={i}
                             onClick={() => {
-                              
                               setImgIndex(i);
                             }}
                             style={{
