@@ -151,24 +151,24 @@ const projects: Project[] = [
     code: "https://github.com/leuylomllm/Reciep_Finder",
     category: "webapp",
   },
-  {
-    id: 5,
-    title: "SkyCast",
-    subtitle: "Weather Forecast App",
-    description:
-      "A weather app showing live data with an elegant UI — temperature, humidity, wind, and dynamic background themes.",
-    technologies: ["Vue", "Vite", "Tailwind CSS", "Weather API", "TypeScript"],
-    highlights: [
-      "Real-time weather via API",
-      "Dynamic background per weather",
-      "Search by city & location",
-      "Clean UI & UX focus",
-    ],
-    image: Image.weather,
-    // demo: "https://weather-app-acnd.vercel.app",
-    code: "https://github.com/leuy-llm/weatherApp",
-    category: "webapp",
-  },
+//   {
+//     id: 5,
+//     title: "SkyCast",
+//     subtitle: "Weather Forecast App",
+//     description:
+//       "A weather app showing live data with an elegant UI — temperature, humidity, wind, and dynamic background themes.",
+//     technologies: ["Vue", "Vite", "Tailwind CSS", "Weather API", "TypeScript"],
+//     highlights: [
+//       "Real-time weather via API",
+//       "Dynamic background per weather",
+//       "Search by city & location",
+//       "Clean UI & UX focus",
+//     ],
+//     image: Image.weather,
+//     // demo: "https://weather-app-acnd.vercel.app",
+//     code: "https://github.com/leuy-llm/weatherApp",
+//     category: "webapp",
+//   },
 ];
 
 const CATEGORY_LABEL: Record<string, string> = {
