@@ -187,7 +187,6 @@ export default function Project() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [direction, setDirection] = useState(1);
   const [imgIndex, setImgIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [imgDirection, setImgDirection] = useState(1);
   const go = (idx: number, dir: number) => {
     if (isAnimating) return;
@@ -201,15 +200,7 @@ export default function Project() {
   const images = current.images ?? [current.image];
   const currentImg = images[imgIndex];
 
-  useEffect(() => {
-    if (isPaused) return;
 
-    const interval = setInterval(() => {
-      setImgIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [images.length, isPaused]);
 
   const handleNext = () => go((currentIndex + 1) % projects.length, 1);
   const handlePrev = () =>
@@ -375,8 +366,6 @@ export default function Project() {
                         </span>
                       </div>
                       <div
-                        onMouseEnter={() => setIsPaused(true)}
-                        onMouseLeave={() => setIsPaused(false)}
                         style={{
                           position: "relative", // 👈 IMPORTANT
                           paddingTop: 36,
@@ -408,14 +397,10 @@ export default function Project() {
                         </AnimatePresence>
                         {/* LEFT */}
                         <button
-                          onClick={() => {
-                            setIsPaused(true);
-                            setImgDirection(-1);
-                            setImgIndex(
-                              (prev) =>
-                                (prev - 1 + images.length) % images.length,
-                            );
-                          }}
+                         onClick={() => {
+  setImgDirection(-1);
+  setImgIndex((prev) => (prev - 1 + images.length) % images.length);
+}}
                           style={{
                             position: "absolute",
                             top: "50%",
@@ -435,11 +420,10 @@ export default function Project() {
 
                         {/* RIGHT */}
                         <button
-                          onClick={() => {
-                            setIsPaused(true);
-                            setImgDirection(1);
-                            setImgIndex((prev) => (prev + 1) % images.length);
-                          }}
+                         onClick={() => {
+  setImgDirection(1);
+  setImgIndex((prev) => (prev + 1) % images.length);
+}}
                           style={{
                             position: "absolute",
                             top: "50%",
@@ -470,7 +454,7 @@ export default function Project() {
                           <div
                             key={i}
                             onClick={() => {
-                              setIsPaused(true);
+                              
                               setImgIndex(i);
                             }}
                             style={{
