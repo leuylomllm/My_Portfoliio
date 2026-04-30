@@ -196,7 +196,7 @@ function Skill() {
       style={{
         background: "#0A0A0F",
         padding: "100px 24px",
-        fontFamily: "'DM Sans', sans-serif",
+         fontFamily: "'DM Mono', 'Fira Code', monospace",
       }}
     >
      
@@ -212,7 +212,7 @@ function Skill() {
         >
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+               fontFamily: "'DM Mono', 'Fira Code', monospace",
               fontSize: 12,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
@@ -225,7 +225,7 @@ function Skill() {
           </p>
           <h2
             style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'DM Mono', 'Fira Code', monospace",
               fontSize: "clamp(30px, 4.5vw, 48px)",
               fontWeight: 800,
               color: "#F1F5F9",
@@ -239,7 +239,7 @@ function Skill() {
           <div className="divider-line" />
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'DM Mono', 'Fira Code', monospace",
               color: "#475569",
               fontSize: 15,
               maxWidth: 400,
@@ -264,10 +264,11 @@ function Skill() {
             flexWrap: "wrap",
             gap: 8,
             marginBottom: 44,
+              
           }}
         >
           {FILTERS.map((f) => (
-            <button
+            <button  style={{ fontFamily: "'DM Mono', 'Fira Code', monospace",}}
               key={f}
               className={`skill-filter-btn ${active === f ? "active" : ""}`}
               onClick={() => setActive(f)}
@@ -283,7 +284,7 @@ function Skill() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'DM Mono', 'Fira Code', monospace",
             fontSize: 12,
             color: "#334155",
             letterSpacing: "0.1em",
@@ -333,7 +334,7 @@ function Skill() {
                   <div style={{ minWidth: 0 }}>
                     <h3
                       style={{
-                        fontFamily: "'DM Sans', sans-serif",
+                         fontFamily: "'DM Mono', 'Fira Code', monospace",
                         fontSize: 14,
                         fontWeight: 600,
                         color: "#E2E8F0",
@@ -347,7 +348,7 @@ function Skill() {
                     </h3>
                     <span
                       style={{
-                        fontFamily: "'DM Sans', sans-serif",
+                         fontFamily: "'DM Mono', 'Fira Code', monospace",
                         fontSize: 11,
                         fontWeight: 500,
                         color: CAT_COLOR[skill.category] || "#94A3B8",
@@ -371,7 +372,7 @@ function Skill() {
                 >
                   <span
                     style={{
-                      fontFamily: "'DM Sans', sans-serif",
+                       fontFamily: "'DM Mono', 'Fira Code', monospace",
                       fontSize: 11,
                       color: "#334155",
                       fontWeight: 400,

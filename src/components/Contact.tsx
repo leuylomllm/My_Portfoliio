@@ -54,7 +54,7 @@ const Contact = () => {
       style={{
         background: "#0A0A0F",
         padding: "100px 24px",
-        fontFamily: "'DM Sans', sans-serif",
+        fontFamily: "'DM Mono', 'Fira Code', monospace",
       }}
     >
       <div style={{ maxWidth: 1040, margin: "0 auto" }}>
@@ -68,7 +68,7 @@ const Contact = () => {
         >
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'DM Mono', 'Fira Code', monospace",
               fontSize: 12,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
@@ -95,7 +95,7 @@ const Contact = () => {
           <div className="divider-line" />
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'DM Mono', 'Fira Code', monospace",
               color: "#475569",
               fontSize: 15,
               maxWidth: 400,
@@ -142,7 +142,7 @@ const Contact = () => {
               </h3>
               <p
                 style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'DM Mono', 'Fira Code', monospace",
                   fontSize: 14,
                   color: "#475569",
                   lineHeight: 1.75,
@@ -171,7 +171,7 @@ const Contact = () => {
                       <div>
                         <p
                           style={{
-                            fontFamily: "'DM Sans', sans-serif",
+                            fontFamily: "'DM Mono', 'Fira Code', monospace",
                             fontSize: 11,
                             color: "#334155",
                             fontWeight: 500,
@@ -184,7 +184,7 @@ const Contact = () => {
                         </p>
                         <p
                           style={{
-                            fontFamily: "'DM Sans', sans-serif",
+                            fontFamily: "'DM Mono', 'Fira Code', monospace",
                             fontSize: 14,
                             color: "#CBD5E1",
                             fontWeight: 400,
@@ -204,7 +204,7 @@ const Contact = () => {
                       <div>
                         <p
                           style={{
-                            fontFamily: "'DM Sans', sans-serif",
+                            fontFamily: "'DM Mono', 'Fira Code', monospace",
                             fontSize: 11,
                             color: "#334155",
                             fontWeight: 500,
@@ -217,7 +217,7 @@ const Contact = () => {
                         </p>
                         <p
                           style={{
-                            fontFamily: "'DM Sans', sans-serif",
+                            fontFamily: "'DM Mono', 'Fira Code', monospace",
                             fontSize: 14,
                             color: "#CBD5E1",
                             fontWeight: 400,
@@ -237,7 +237,7 @@ const Contact = () => {
             <div>
               <p
                 style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'DM Mono', 'Fira Code', monospace",
                   fontSize: 11,
                   color: "#334155",
                   fontWeight: 500,
@@ -405,7 +405,7 @@ const Contact = () => {
 
               <p
                 style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'DM Mono', 'Fira Code', monospace",
                   fontSize: 12,
                   color: "#2A2A3E",
                   textAlign: "center",

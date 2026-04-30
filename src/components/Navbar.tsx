@@ -19,7 +19,7 @@ const Navbar = () => {
       <header className={`nav-wrap ${scrolled ? "scrolled" : ""}`}>
         <nav
           className={`nav-inner ${scrolled ? "scrolled" : ""}`}
-          style={{ position: "relative" }}
+          style={{ position: "relative"  }}
         >
           {/* Logo */}
           <a href="#" className="nav-logo">

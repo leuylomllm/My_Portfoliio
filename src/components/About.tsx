@@ -23,7 +23,7 @@ export default function About() {
       style={{
         background: "#0A0A0F",
         padding: "100px 24px",
-        fontFamily: "'DM Sans', sans-serif",
+         fontFamily: "'DM Mono', 'Fira Code', monospace",
       }}
     >
       <style>{`
@@ -37,7 +37,7 @@ export default function About() {
           border-radius: 8px;
           background: #111118;
           border: 1px solid #1E1E2E;
-          font-family: 'DM Sans', sans-serif;
+          font-family: 'DM Mono', 'Fira Code', monospace;
           font-size: 12.5px;
           font-weight: 500;
           color: #94A3B8;
@@ -74,14 +74,14 @@ export default function About() {
           transform: translateY(-2px);
         }
         .about-stat-num {
-          font-family: 'Syne', sans-serif;
+           font-family: 'DM Mono', 'Fira Code', monospace;
           font-size: 26px;
           font-weight: 800;
           color: #F1F5F9;
           line-height: 1;
         }
         .about-stat-label {
-          font-family: 'DM Sans', sans-serif;
+           font-family: 'DM Mono', 'Fira Code', monospace;
           font-size: 12px;
           color: #475569;
           font-weight: 400;
@@ -141,7 +141,7 @@ export default function About() {
           50%      { box-shadow: 0 0 0 6px #22C55E11; }
         }
         .about-badge-text {
-          font-family: 'DM Sans', sans-serif;
+           font-family: 'DM Mono', 'Fira Code', monospace;
           font-size: 12px;
           color: #94A3B8;
           font-weight: 400;
@@ -158,7 +158,7 @@ export default function About() {
           right: -16px;
           background: #38BDF8;
           color: #0A0A0F;
-          font-family: 'Syne', sans-serif;
+           font-family: 'DM Mono', 'Fira Code', monospace;
           font-size: 11px;
           font-weight: 800;
           letter-spacing: 0.08em;
@@ -195,7 +195,7 @@ export default function About() {
         >
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'DM Mono', 'Fira Code', monospace",
               fontSize: 12,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
@@ -208,7 +208,7 @@ export default function About() {
           </p>
           <h2
             style={{
-              fontFamily: "'Syne', sans-serif",
+               fontFamily: "'DM Mono', 'Fira Code', monospace",
               fontSize: "clamp(30px, 4.5vw, 48px)",
               fontWeight: 800,
               color: "#F1F5F9",
@@ -238,7 +238,7 @@ export default function About() {
             <div className="divider-line" />
             <p
               style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'DM Mono', 'Fira Code', monospace",
                 fontSize: 16,
                 color: "#64748B",
                 lineHeight: 1.85,

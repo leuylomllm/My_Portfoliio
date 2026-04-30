@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800;900&display=swap');
 
 /* index.css (or App.css) — add near top */
 html,
@@ -253,6 +254,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: "Syne", sans-serif;
+  
   font-weight: 800;
   font-size: 16px;
   color: #38bdf8;
@@ -286,8 +288,8 @@ body {
   position: relative;
   display: block;
   padding: 7px 14px;
-  font-family: "DM Sans", sans-serif;
-  font-size: 13.5px;
+   font-family: 'DM Mono', 'Fira Code', monospace;
+  font-size: 14px;
   font-weight: 500;
   color: #64748b;
   text-decoration: none;

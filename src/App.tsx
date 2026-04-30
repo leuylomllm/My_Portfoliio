@@ -7,6 +7,7 @@ import About from "./components/About";
 import Project from "./components/Project";
 import Contact from "./components/Contact";
 import Skill from "./components/Skill";
+import Experience from "./components/experiences ";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <About id="about" />
         <Skill id="skill" />
         <Project id="projects" />
+        <Experience id="experience" />
         <Contact id="contact" />
         <Footer />
       </main>

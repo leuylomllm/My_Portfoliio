@@ -39,35 +39,10 @@ const itemVariants = {
 
 const TechStack = () => {
   return (
-    <section className="py-20  text-white text-center relative overflow-hidden">
+    <section className="py-20  text-white text-center relative overflow-hidden" style={{ fontFamily: "'DM Mono', 'Fira Code', monospace",}}>
       {/* Background gradient orbs */}
-      {/* <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div> */}
       
       <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        {/* Heading */}
-        {/* <motion.h2 
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 text-transparent bg-clip-text"
-        >
-          My Tech Stack
-        </motion.h2> */}
-
-        {/* <motion.p 
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-gray-400 max-w-3xl mx-auto mb-16 text-sm sm:text-base leading-relaxed"
-        >
-          I work with modern tools and technologies to build responsive, scalable, and interactive web applications.
-        </motion.p> */}
-
-      
-
         {/* Optional scrolling ticker at bottom */}
         <div className="overflow-hidden relative w-full mt-16">
           <div className="flex animate-scroll gap-12 whitespace-nowrap">

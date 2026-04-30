@@ -151,24 +151,24 @@ const projects: Project[] = [
     code: "https://github.com/leuylomllm/Reciep_Finder",
     category: "webapp",
   },
-//   {
-//     id: 5,
-//     title: "SkyCast",
-//     subtitle: "Weather Forecast App",
-//     description:
-//       "A weather app showing live data with an elegant UI — temperature, humidity, wind, and dynamic background themes.",
-//     technologies: ["Vue", "Vite", "Tailwind CSS", "Weather API", "TypeScript"],
-//     highlights: [
-//       "Real-time weather via API",
-//       "Dynamic background per weather",
-//       "Search by city & location",
-//       "Clean UI & UX focus",
-//     ],
-//     image: Image.weather,
-//     // demo: "https://weather-app-acnd.vercel.app",
-//     code: "https://github.com/leuy-llm/weatherApp",
-//     category: "webapp",
-//   },
+  //   {
+  //     id: 5,
+  //     title: "SkyCast",
+  //     subtitle: "Weather Forecast App",
+  //     description:
+  //       "A weather app showing live data with an elegant UI — temperature, humidity, wind, and dynamic background themes.",
+  //     technologies: ["Vue", "Vite", "Tailwind CSS", "Weather API", "TypeScript"],
+  //     highlights: [
+  //       "Real-time weather via API",
+  //       "Dynamic background per weather",
+  //       "Search by city & location",
+  //       "Clean UI & UX focus",
+  //     ],
+  //     image: Image.weather,
+  //     // demo: "https://weather-app-acnd.vercel.app",
+  //     code: "https://github.com/leuy-llm/weatherApp",
+  //     category: "webapp",
+  //   },
 ];
 
 const CATEGORY_LABEL: Record<string, string> = {
@@ -220,7 +220,7 @@ export default function Project() {
       style={{
         background: "#0A0A0F",
         padding: "100px 24px",
-        fontFamily: "'DM Sans', sans-serif",
+        fontFamily: "'DM Mono', 'Fira Code', monospace",
       }}
     >
       <div style={{ maxWidth: 1080, margin: "0 auto" }}>
@@ -234,7 +234,7 @@ export default function Project() {
         >
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'DM Mono', 'Fira Code', monospace",
               fontSize: 12,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
@@ -261,7 +261,7 @@ export default function Project() {
           <div className="divider-line" />
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'DM Mono', 'Fira Code', monospace",
               color: "#475569",
               fontSize: 15,
               maxWidth: 400,
@@ -349,7 +349,7 @@ export default function Project() {
                         />
                         <span
                           style={{
-                            fontFamily: "'DM Sans', sans-serif",
+                            fontFamily: "'DM Mono', 'Fira Code', monospace",
                             fontSize: 11,
                             color: "#334155",
                             marginLeft: 10,
@@ -522,7 +522,7 @@ export default function Project() {
                       </span>
                       <span
                         style={{
-                          fontFamily: "'DM Sans', sans-serif",
+                          fontFamily: "'DM Mono', 'Fira Code', monospace",
                           fontSize: 12,
                           color: "#334155",
                           letterSpacing: "0.08em",
@@ -548,7 +548,7 @@ export default function Project() {
                     </h2>
                     <p
                       style={{
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'DM Mono', 'Fira Code', monospace",
                         fontSize: 13,
                         color: "#38BDF8",
                         fontWeight: 500,
@@ -559,7 +559,7 @@ export default function Project() {
                     </p>
                     <p
                       style={{
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'DM Mono', 'Fira Code', monospace",
                         fontSize: 14,
                         color: "#64748B",
                         lineHeight: 1.75,
@@ -574,7 +574,7 @@ export default function Project() {
                     <div style={{ marginBottom: 20 }}>
                       <p
                         style={{
-                          fontFamily: "'DM Sans', sans-serif",
+                          fontFamily: "'DM Mono', 'Fira Code', monospace",
                           fontSize: 11,
                           letterSpacing: "0.14em",
                           textTransform: "uppercase",
@@ -600,7 +600,7 @@ export default function Project() {
                     <div style={{ marginBottom: 28 }}>
                       <p
                         style={{
-                          fontFamily: "'DM Sans', sans-serif",
+                          fontFamily: "'DM Mono', 'Fira Code', monospace",
                           fontSize: 11,
                           letterSpacing: "0.14em",
                           textTransform: "uppercase",
@@ -631,7 +631,7 @@ export default function Project() {
                               display: "flex",
                               gap: 10,
                               alignItems: "flex-start",
-                              fontFamily: "'DM Sans', sans-serif",
+                              fontFamily: "'DM Mono', 'Fira Code', monospace",
                               fontSize: 13.5,
                               color: "#64748B",
                               lineHeight: 1.6,
@@ -798,7 +798,7 @@ export default function Project() {
                   </h3>
                   <p
                     style={{
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'DM Mono', 'Fira Code', monospace",
                       fontSize: 12,
                       color: "#38BDF8",
                       fontWeight: 500,
@@ -810,7 +810,7 @@ export default function Project() {
                   </p>
                   <p
                     style={{
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'DM Mono', 'Fira Code', monospace",
                       fontSize: 13,
                       color: "#475569",
                       lineHeight: 1.7,
@@ -843,7 +843,7 @@ export default function Project() {
                     {p.technologies.length > 4 && (
                       <span
                         style={{
-                          fontFamily: "'DM Sans', sans-serif",
+                          fontFamily: "'DM Mono', 'Fira Code', monospace",
                           fontSize: 11,
                           color: "#334155",
                           padding: "3px 9px",

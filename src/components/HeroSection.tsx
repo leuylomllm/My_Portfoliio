@@ -139,8 +139,9 @@ const HeroSection = () => {
           color: #0A0A0F;
           padding: 12px 26px;
           border-radius: 12px;
-          font-family: 'DM Sans', sans-serif;
-          font-weight: 600;
+           font-family: 'DM Mono', 'Fira Code', monospace;
+          
+          font-weight: 500;
           font-size: 14px;
           letter-spacing: 0.02em;
           text-decoration: none;
@@ -162,7 +163,7 @@ const HeroSection = () => {
           color: #94A3B8;
           padding: 12px 26px;
           border-radius: 12px;
-          font-family: 'DM Sans', sans-serif;
+           font-family: 'DM Mono', 'Fira Code', monospace;
           font-weight: 500;
           font-size: 14px;
           letter-spacing: 0.02em;
@@ -183,14 +184,14 @@ const HeroSection = () => {
           gap: 2px;
         }
         .stat-number {
-          font-family: 'Syne', sans-serif;
+           font-family: 'DM Mono', 'Fira Code', monospace;
           font-size: 22px;
           font-weight: 800;
           color: #F1F5F9;
           line-height: 1;
         }
         .stat-label {
-          font-family: 'DM Sans', sans-serif;
+           font-family: 'DM Mono', 'Fira Code', monospace;
           font-size: 12px;
           color: #475569;
           font-weight: 400;
@@ -216,7 +217,7 @@ const HeroSection = () => {
           cursor: pointer;
         }
         .scroll-text {
-          font-family: 'DM Sans', sans-serif;
+           font-family: 'DM Mono', 'Fira Code', monospace;
           font-size: 10px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
@@ -315,7 +316,7 @@ const HeroSection = () => {
           <motion.div {...fadeUp(0.18)}>
             <p
               style={{
-                fontFamily: "'DM Sans', sans-serif",
+                 fontFamily: "'DM Mono', 'Fira Code', monospace",
                 fontSize: 14,
                 color: "#475569",
                 fontWeight: 400,
@@ -328,7 +329,8 @@ const HeroSection = () => {
             </p>
             <h1
               style={{
-                fontFamily: "'Syne', sans-serif",
+                 fontFamily: "'DM Mono', 'Fira Code', monospace",
+                
                 fontSize: "clamp(40px, 6vw, 68px)",
                 fontWeight: 800,
                 color: "#F1F5F9",
@@ -345,7 +347,7 @@ const HeroSection = () => {
           <motion.div {...fadeUp(0.26)} style={{ marginBottom: 20 }}>
             <h2
               style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'DM Mono', 'Fira Code', monospace",
                 fontSize: "clamp(18px, 2.8vw, 26px)",
                 fontWeight: 400,
                 color: "#38BDF8",
@@ -374,7 +376,7 @@ const HeroSection = () => {
           <motion.p
             {...fadeUp(0.34)}
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+               fontFamily: "'DM Mono', 'Fira Code', monospace",
               fontSize: 15,
               color: "#64748B",
               lineHeight: 1.75,
@@ -397,6 +399,7 @@ const HeroSection = () => {
               gap: 12,
               flexWrap: "wrap",
               marginBottom: 40,
+               fontFamily: "'DM Mono', 'Fira Code', monospace",
             }}
           >
             <a href="#projects" className="btn-primary">
