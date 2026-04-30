@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const NAV_ITEMS = ["Home", "About", "Skills", "Projects", "Contact"];
+const NAV_ITEMS = ["About", "Skills", "Projects","Experience", "Contact"];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,10 +22,16 @@ const Navbar = () => {
           style={{ position: "relative"  }}
         >
           {/* Logo */}
-          <a href="#" className="nav-logo">
+          {/* <a href="#" className="nav-logo">
             <div className="nav-logo-mark">L</div>
             <span className="nav-logo-text">Lom Leuy</span>
-          </a>
+          </a> */}
+            <div className="nav-logo">
+          <span className="bracket">&lt;/&gt;</span>{" "}
+          lom{" "}
+          <span className="slash">/</span>{" "}
+          <span className="name">leuy</span>
+        </div>
 
           {/* Desktop links */}
           <ul className="nav-links">

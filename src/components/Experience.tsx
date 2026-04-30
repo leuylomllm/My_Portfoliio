@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { motion } from "framer-motion";
 const experiences = [
   {
     id: 1,
@@ -14,7 +14,7 @@ const experiences = [
       "Learned Vue.js, JavaScript, and TypeScript in production projects",
       "Collaborated with senior developers on small features and bug fixes",
     ],
-    skills: ["Vue.js", "JavaScript", "Primeflex", "SCSS", "TypeScript","CSS"],
+    skills: ["Vue.js", "JavaScript", "Primeflex", "SCSS", "TypeScript", "CSS"],
     icon: "🎓",
     accent: "#38bdf8",
   },
@@ -34,13 +34,13 @@ const experiences = [
     ],
     skills: [
       "Vue.js",
-    
+
       "TypeScript",
       "Node.js",
       "Fastify",
       "MySQL",
       "PrimeVue",
-    "Tailwind CSS",
+      "Tailwind CSS",
     ],
     icon: "💼",
     accent: "#22d3ee",
@@ -51,55 +51,101 @@ export default function Experience() {
   const [activeId, setActiveId] = useState<number | null>(null);
 
   return (
-    <section id="projects"
-       style={{
-        background: "#0A0A0F",
-        padding: "100px 24px",
-       fontFamily: "'DM Mono', 'Fira Code', monospace",
+    <section
+      id="experience"
+      style={{
+        padding: "80px 48px",
+        fontFamily: "'Inter',system-ui, sans-serif",
+        position: "relative",
       }}
     >
       {/* Ambient background blobs */}
-      
+      <style>
+        {`
+          .ex-headline {
+           font-family: Inter, system-ui, sans-serif;
+            font-size: clamp(36px, 48px, 56px);
+            font-weight: 900;
+            color: #F8FAFC;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            margin: 0 0 16px;
+            position: relative;
+            z-index: 1;
+          }
+          .ex-headline .jon {
+            background: linear-gradient(135deg, #22D3EE 0%, #6366F1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+          .ex-sub {
+          font-family: Inter, system-ui, sans-serif;
+          font-size: 16px;
+          color: #ffffff66;
+          line-height: 1.8;
+          max-width: 480px;
+          margin: 0 0 56px;
+          position: relative;
+          z-index: 1;
+        }  
+          `}
+      </style>
 
-      <div style={{ maxWidth: 1080, margin: "0 auto" }} className="relative z-10 mx-auto max-w-4xl">
+      <div
+        style={{ maxWidth: 1140, margin: "0 auto" }}
+        className="relative z-10 mx-auto max-w-4xl"
+      >
         {/* Section label */}
         <div className="mb-6 flex items-center gap-4">
           <span
-            className="text-xs font-bold uppercase tracking-[0.3em]"
-            style={{ color: "#22d3ee" }}
+            className="text-xs  uppercase tracking-[0.2em]"
+            style={{
+              color: "#22d3ee",
+              fontWeight: 500,
+              fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+              fontSize: 14,
+            }}
           >
             04. Experience
           </span>
-          <div className="h-px flex-1" style={{ background: "linear-gradient(to right, #22d3ee33, transparent)" }} />
+          <div
+            className="h-px flex-1"
+            style={{
+              background: "linear-gradient(to right, #22d3ee33, transparent)",
+            }}
+          />
         </div>
 
         {/* Heading */}
-        <h2
-          className="mb-4 text-5xl font-black leading-none md:text-6xl"
-          style={{ fontFamily: "'Syne', 'DM Mono', monospace", color: "#f0f0f0" }}
+        <motion.h2
+          className="ex-headline"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55, delay: 0.05 }}
         >
-          Career{" "}
-          <span
-            style={{
-              background: "linear-gradient(90deg, #22d3ee, #a78bfa, #f472b6)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Journey
-          </span>
-        </h2>
-
-        <p className="mb-16 max-w-lg text-sm leading-relaxed" style={{ color: "#6b7280" }}>
-         Focused on building innovative software solutions across product and enterprise environments.
-        </p>
-
+          Career <span className="jon">Journey</span>
+        </motion.h2>
+        <motion.p
+          className="ex-sub"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          Focused on building innovative software solutions across product and
+          enterprise environments.
+        </motion.p>
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line */}
           <div
             className="absolute left-5 top-0 h-full w-px"
-            style={{ background: "linear-gradient(to bottom, #22d3ee44, #a78bfa44, transparent)" }}
+            style={{
+              background:
+                "linear-gradient(to bottom, #22d3ee44, #a78bfa44, transparent)",
+            }}
           />
 
           <div className="space-y-8">
@@ -148,14 +194,17 @@ export default function Experience() {
                       <div>
                         <h3
                           className="text-lg font-bold"
-                          style={{ color: "#e5e7eb", fontFamily: "'Syne', sans-serif" }}
+                          style={{
+                            color: "#e5e7eb",
+                            fontFamily: "'Inter', 'system-ui', sans-serif",
+                          }}
                         >
                           {exp.title}
                         </h3>
                         <div className="mt-1 flex items-center gap-2">
                           <span
                             className="text-sm font-semibold"
-                            style={{ color: exp.accent }}
+                            style={{ color: exp.accent,  }}
                           >
                             {exp.company}
                           </span>
@@ -164,6 +213,7 @@ export default function Experience() {
                             style={{
                               background: exp.accent + "18",
                               color: exp.accent,
+                              
                               border: `1px solid ${exp.accent}33`,
                             }}
                           >
@@ -172,26 +222,48 @@ export default function Experience() {
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-2 text-xs" style={{ color: "#4b5563" }}>
+                      <div
+                        className="flex items-center gap-2 text-xs"
+                        style={{ color: "#ffffff66", fontFamily:"JetBrains Mono, Fira Code, monospace", fontWeight:600
+                           }}
+                      >
                         <span>📅</span>
                         <span style={{ color: "#6b7280" }}>{exp.period}</span>
                       </div>
                     </div>
 
                     {/* Description */}
-                    <p className="mt-4 text-sm leading-relaxed" style={{ color: "#9ca3af" }}>
+                    <p
+                      className="mt-4 text-sm leading-relaxed"
+                      style={{ color: "#ffffff66", }}
+                    >
                       {exp.description}
                     </p>
 
                     {/* Expanded content */}
                     <div
                       className="overflow-hidden transition-all duration-500"
-                      style={{ maxHeight: isActive ? "600px" : "0", opacity: isActive ? 1 : 0 }}
+                      style={{
+                        maxHeight: isActive ? "600px" : "0",
+                        opacity: isActive ? 1 : 0,
+                      }}
                     >
                       <ul className="mt-4 space-y-2">
                         {exp.bullets.map((bullet, i) => (
-                          <li key={i} className="flex items-start gap-3 text-sm" style={{ color: "#9ca3af" }}>
-                            <span style={{ color: exp.accent, marginTop: "2px", flexShrink: 0 }}>▸</span>
+                          <li
+                            key={i}
+                            className="flex items-start gap-3 text-sm"
+                            style={{ color: "#9ca3af" }}
+                          >
+                            <span
+                              style={{
+                                color: exp.accent,
+                                marginTop: "2px",
+                                flexShrink: 0,
+                              }}
+                            >
+                              ▸
+                            </span>
                             {bullet}
                           </li>
                         ))}
@@ -205,9 +277,10 @@ export default function Experience() {
                           key={skill}
                           className="rounded-md px-3 py-1 text-xs font-medium"
                           style={{
-                            background: "#1a1a2e",
-                            color: "#6b7280",
+                             background:"#111827",
+                            color: "#ffffff66",
                             border: "1px solid #2a2a40",
+                            fontFamily:"'JetBrains Mono', Fira Code, monospace"
                           }}
                         >
                           {skill}
@@ -219,7 +292,7 @@ export default function Experience() {
                     <div className="mt-4 flex justify-end">
                       <span
                         className="text-xs transition-all duration-300"
-                        style={{ color: exp.accent + "88" }}
+                        style={{ color: exp.accent + "88", fontFamily:"'JetBrains Mono', Fira Code, monospace" }}
                       >
                         {isActive ? "▲ Collapse" : "▼ Show details"}
                       </span>
@@ -233,8 +306,6 @@ export default function Experience() {
       </div>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800;900&display=swap');
-
         @keyframes fadeSlideIn {
           from { opacity: 0; transform: translateY(24px); }
           to   { opacity: 1; transform: translateY(0); }

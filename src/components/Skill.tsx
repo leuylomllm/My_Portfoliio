@@ -1,10 +1,32 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaReact, FaVuejs, FaNodeJs, FaHtml5, FaCss3Alt, FaJs } from "react-icons/fa";
-import { SiExpress, SiLaravel, SiVite, SiBootstrap, SiGit, SiTailwindcss, SiPrimevue, SiMysql, SiTypescript, SiPostman } from "react-icons/si";
+import {
+  FaReact,
+  FaVuejs,
+  FaNodeJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+} from "react-icons/fa";
+import {
+  SiExpress,
+  SiLaravel,
+  SiVite,
+  SiBootstrap,
+  SiGit,
+  SiTailwindcss,
+  SiPrimevue,
+  SiMysql,
+  SiTypescript,
+  SiPostman,
+} from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { Cloud } from "lucide-react";
-import { PiMicrosoftWordLogoFill, PiMicrosoftExcelLogoFill, PiMicrosoftPowerpointLogoFill } from "react-icons/pi";
+import {
+  PiMicrosoftWordLogoFill,
+  PiMicrosoftExcelLogoFill,
+  PiMicrosoftPowerpointLogoFill,
+} from "react-icons/pi";
 
 const LEVEL_WIDTH = { Beginner: "30%", Intermediate: "62%", Advanced: "90%" };
 const LEVEL_COLOR = {
@@ -194,63 +216,101 @@ function Skill() {
     <section
       id="skills"
       style={{
-        background: "#0A0A0F",
-        padding: "100px 24px",
-         fontFamily: "'DM Mono', 'Fira Code', monospace",
+        padding: "80px 48px",
+        fontFamily: "'Inter',system-ui, sans-serif",
+        position: "relative",
       }}
     >
-     
+      <style>{`
+            @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@700;800;900&family=DM+Sans:wght@300;400;500&display=swap');
+    
+            /* Subtle grid bg */
+            #projects::before {
+              content: '';
+              position: absolute;
+              inset: 0;
+              background-image:
+                linear-gradient(#1E293B0D 1px, transparent 1px),
+                linear-gradient(90deg, #1E293B0D 1px, transparent 1px);
+              background-size: 60px 60px;
+              pointer-events: none;
+              z-index: 0;
+            }
+    
+            .proj-section-label {
+              display: flex;
+              align-items: center;
+              gap: 14px;
+             font-family: JetBrains Mono, Fira Code, monospace;
+             font-size: 14px;
+              letter-spacing: 0.2em;
+              color: #22D3EE;
+              text-transform: uppercase;
+              font-weight: 400;
+              margin-bottom: 24px;
+              position: relative;
+              z-index: 1;
+            }
+            .proj-section-label::after {
+              content: '';
+              flex: 1;
+              max-width: 100%;
+              height: 1px;
+              background: linear-gradient(90deg, #22D3EE44, transparent);
+            }
+    
+            .proj-headline {
+              font-family: Inter, system-ui, sans-serif;
+              font-size: clamp(36px, 48px, 56px);
+              font-weight: 900;
+              color: #F8FAFC;
+              letter-spacing: -0.02em;
+              line-height: 1.05;
+              margin: 0 0 16px;
+              position: relative;
+              z-index: 1;
+            }
+            .proj-headline .accent {
+              background: linear-gradient(135deg, #22D3EE 0%, #6366F1 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+            }
+          `}</style>
 
-      <div style={{ maxWidth: 1080, margin: "0 auto" }}>
-        {/* Header */}
+      <div style={{ maxWidth: 1140, margin: "0 auto" }}>
+        {/* Section label */}
         <motion.div
-          initial={{ opacity: 0, y: -16 }}
+          className="proj-section-label"
+          initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          style={{ textAlign: "center", marginBottom: 48 }}
         >
-          <p
-            style={{
-               fontFamily: "'DM Mono', 'Fira Code', monospace",
-              fontSize: 12,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "#38BDF8",
-              fontWeight: 500,
-              marginBottom: 12,
-            }}
-          >
-            What I Work With
-          </p>
-          <h2
-            style={{
-              fontFamily: "'DM Mono', 'Fira Code', monospace",
-              fontSize: "clamp(30px, 4.5vw, 48px)",
-              fontWeight: 800,
-              color: "#F1F5F9",
-              lineHeight: 1.1,
-              margin: 0,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Technical Skills
-          </h2>
-          <div className="divider-line" />
-          <p
-            style={{
-              fontFamily: "'DM Mono', 'Fira Code', monospace",
-              color: "#475569",
-              fontSize: 15,
-              maxWidth: 400,
-              margin: "18px auto 0",
-              lineHeight: 1.75,
-              fontWeight: 300,
-            }}
-          >
-            Tools and technologies I use to build modern web applications.
-          </p>
+          02. &nbsp;Skills
         </motion.div>
+
+        {/* Headline */}
+        <motion.h2
+          className="proj-headline"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55, delay: 0.05 }}
+        >
+          Technical <span className="accent">Expertise</span>
+        </motion.h2>
+
+        <motion.p
+          className="proj-sub"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          Over a decade of production delivery across frontend, backend, data
+          systems, and AI integration.
+        </motion.p>
 
         {/* Filter buttons */}
         <motion.div
@@ -264,11 +324,11 @@ function Skill() {
             flexWrap: "wrap",
             gap: 8,
             marginBottom: 44,
-              
           }}
         >
           {FILTERS.map((f) => (
-            <button  style={{ fontFamily: "'DM Mono', 'Fira Code', monospace",}}
+            <button
+              style={{ fontFamily: "'DM Mono', 'Fira Code', monospace" }}
               key={f}
               className={`skill-filter-btn ${active === f ? "active" : ""}`}
               onClick={() => setActive(f)}
@@ -334,7 +394,7 @@ function Skill() {
                   <div style={{ minWidth: 0 }}>
                     <h3
                       style={{
-                         fontFamily: "'DM Mono', 'Fira Code', monospace",
+                        fontFamily: "'DM Mono', 'Fira Code', monospace",
                         fontSize: 14,
                         fontWeight: 600,
                         color: "#E2E8F0",
@@ -348,7 +408,7 @@ function Skill() {
                     </h3>
                     <span
                       style={{
-                         fontFamily: "'DM Mono', 'Fira Code', monospace",
+                        fontFamily: "'DM Mono', 'Fira Code', monospace",
                         fontSize: 11,
                         fontWeight: 500,
                         color: CAT_COLOR[skill.category] || "#94A3B8",
@@ -372,7 +432,7 @@ function Skill() {
                 >
                   <span
                     style={{
-                       fontFamily: "'DM Mono', 'Fira Code', monospace",
+                      fontFamily: "'DM Mono', 'Fira Code', monospace",
                       fontSize: 11,
                       color: "#334155",
                       fontWeight: 400,

@@ -49,65 +49,248 @@ const Contact = () => {
   ];
 
   return (
-    <section
-      id="contact"
-      style={{
-        background: "#0A0A0F",
-        padding: "100px 24px",
-        fontFamily: "'DM Mono', 'Fira Code', monospace",
-      }}
-    >
-      <div style={{ maxWidth: 1040, margin: "0 auto" }}>
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          style={{ textAlign: "center", marginBottom: 64 }}
-        >
-          <p
-            style={{
-              fontFamily: "'DM Mono', 'Fira Code', monospace",
-              fontSize: 12,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "#38BDF8",
-              fontWeight: 500,
-              marginBottom: 12,
-            }}
-          >
-            Contact
-          </p>
-          <h2
-            style={{
-              fontFamily: "'Syne', sans-serif",
-              fontSize: "clamp(30px, 4.5vw, 48px)",
-              fontWeight: 800,
-              color: "#F1F5F9",
-              lineHeight: 1.1,
-              margin: 0,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Get In Touch
-          </h2>
-          <div className="divider-line" />
-          <p
-            style={{
-              fontFamily: "'DM Mono', 'Fira Code', monospace",
-              color: "#475569",
-              fontSize: 15,
-              maxWidth: 400,
-              margin: "18px auto 0",
-              lineHeight: 1.75,
-              fontWeight: 300,
-            }}
-          >
-            Have a project in mind or just want to say hello? I'd love to hear
-            from you.
-          </p>
-        </motion.div>
+  <section
+    id="contact"
+    style={{
+        padding: "80px 48px",
+        fontFamily: "'DM Sans', sans-serif",
+      position: "relative",
+    }}
+  >
+    <style>{`
+      @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@700;800;900&family=DM+Sans:wght@300;400;500&display=swap');
+
+      /* Subtle grid bg */
+      #projects::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(#1E293B0D 1px, transparent 1px),
+          linear-gradient(90deg, #1E293B0D 1px, transparent 1px);
+        background-size: 60px 60px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .proj-section-label {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-family: JetBrains Mono, Fira Code, monospace;
+        font-size: 14px;
+        letter-spacing: 0.2em;
+        color: #22D3EE;
+        text-transform: uppercase;
+        font-weight: 400;
+        margin-bottom: 24px;
+        position: relative;
+        z-index: 1;
+      }
+      .proj-section-label::after {
+        content: '';
+        flex: 1;
+        max-width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, #22D3EE44, transparent);
+      }
+
+      .proj-headline {
+        font-family: Inter, system-ui, sans-serif;
+        font-size: clamp(36px, 48px, 56px);
+        font-weight: 900;
+        color: #F8FAFC;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+        margin: 0 0 16px;
+        position: relative;
+        z-index: 1;
+      }
+      .proj-headline .accent {
+        background: linear-gradient(135deg, #22D3EE 0%, #6366F1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .proj-sub {
+        font-family: Inter, system-ui, sans-serif;
+        font-size: 16px;
+        color: #ffffff66;
+        line-height: 1.8;
+        max-width: 480px;
+        margin: 0 0 56px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .proj-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .proj-card {
+        background: radial-gradient(60% 40% at 50% 0%, rgba(0, 212, 255, 0.082), transparent);
+        border: 1px solid #1A2235;
+        border-radius: 16px;
+        padding: 32px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+          
+        position: relative;
+        overflow: hidden;
+        transition: border-color 0.3s ease,  transform 0.25s ease, box-shadow 0.3s ease;
+        cursor: default;
+      }
+      .proj-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 20% 10%, #22D3EE07, transparent 65%);
+        opacity: 0;
+        transition: opacity 0.35s ease;
+        pointer-events: none;
+      }
+      .proj-card:hover {
+        border-color: #22D3EE2A;
+        transform: translateY(-3px);
+        box-shadow: 0 16px 48px #00000055;
+      }
+      .proj-card:hover::before { opacity: 1; }
+
+      /* Featured card gets a subtle top accent */
+      .proj-card.featured {
+        border-top: 2px solid #22D3EE33;
+      }
+
+      .proj-card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        
+      }
+
+      .proj-num {
+        font-family: JetBrains Mono, Fira Code, monospace;
+        font-size: 12px;
+        color: rgb(0, 212, 255);
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        opacity: 0.8;
+      }
+
+
+      .proj-icon-group {
+        display: flex;
+        gap: 8px;
+      }
+      .proj-icon-btn {
+        width: 34px;
+        height: 34px;
+        background: #131C2E;
+        border: 1px solid #1E2D45;
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #64748B;
+        text-decoration: none;
+        transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+        cursor: pointer;
+      }
+      .proj-icon-btn:hover {
+        border-color: #22D3EE44;
+        color: #22D3EE;
+        background: #162036;
+      }
+
+      .proj-title {
+        font-family: Inter, system-ui, sans-serif;
+        font-size: clamp(17px, 20px, 22px);
+        font-weight: 700;
+        color: #FFFFFF;
+        line-height: 1.2;
+        margin: 0 0 12px;
+        letter-spacing: -0.015em;
+      }
+
+      .proj-desc {
+        font-family: Inter, system-ui, sans-serif;
+
+        font-size: 14px;
+        color: #ffffff66;
+        line-height: 1.8;
+        font-weight: 400;
+        margin: 0 0 20px;
+        flex: 1;
+      }
+
+      .proj-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: auto;
+      }
+      .proj-tag {
+        font-family: JetBrains Mono, Fira Code, monospace;
+        font-size: 12px;
+        color: #ffffff66;
+        background: #111827;
+        border: 1px solid #1E293B;
+        border-radius: 6px;
+        padding: 4px 10px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        transition: border-color 0.2s ease, color 0.2s ease;
+      }
+      .proj-card:hover .proj-tag {
+        border-color: #1E3045;
+        color: #7A90A8;
+      }
+
+      @media (max-width: 800px) {
+        .proj-grid { grid-template-columns: 1fr !important; }
+        #projects { padding: 60px 24px !important; }
+      }
+    `}</style>
+
+    <div style={{ maxWidth: 1140, margin: "0 auto" }}>
+      {/* Section label */}
+      <motion.div
+        className="proj-section-label"
+        initial={{ opacity: 0, y: -10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        05. &nbsp;Contact
+      </motion.div>
+
+      {/* Headline */}
+      <motion.h2
+        className="proj-headline"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.55, delay: 0.05 }}
+      >
+        Let's <span className="accent">Contact</span>
+      </motion.h2>
+
+      <motion.p
+        className="proj-sub"
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        Have a project in mind? Let's talk. I'm always open to discussing new
+        opportunities.
+      </motion.p>
 
         {/* Grid */}
         <div
@@ -127,34 +310,6 @@ const Contact = () => {
               gap: 24,
             }}
           >
-            <div>
-              <h3
-                style={{
-                  fontFamily: "'Syne', sans-serif",
-                  fontSize: 22,
-                  fontWeight: 800,
-                  color: "#F1F5F9",
-                  margin: "0 0 8px",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Let's Talk
-              </h3>
-              <p
-                style={{
-                  fontFamily: "'DM Mono', 'Fira Code', monospace",
-                  fontSize: 14,
-                  color: "#475569",
-                  lineHeight: 1.75,
-                  fontWeight: 300,
-                  margin: 0,
-                }}
-              >
-                I'm always open to new projects, creative ideas, or
-                opportunities to be part of your vision.
-              </p>
-            </div>
-
             {/* Contact items */}
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {contactItems.map((item, i) => (
@@ -303,7 +458,7 @@ const Contact = () => {
                 }}
               >
                 <div className="contact-field-wrap">
-                  <label className="contact-label">Name</label>
+                  
                   <input
                     type="text"
                     name="name"
@@ -314,7 +469,7 @@ const Contact = () => {
                   />
                 </div>
                 <div className="contact-field-wrap">
-                  <label className="contact-label">Email</label>
+                  
                   <input
                     type="email"
                     name="email"
@@ -328,7 +483,7 @@ const Contact = () => {
 
               {/* Subject */}
               <div className="contact-field-wrap">
-                <label className="contact-label">Subject</label>
+               
                 <input
                   type="text"
                   name="subject"

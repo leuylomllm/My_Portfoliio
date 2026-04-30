@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { label: "Home", href: "#" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Experiences",href: "#experiences" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
@@ -37,7 +38,7 @@ export default function Footer() {
           background: "#0A0A0F",
           borderTop: "1px solid #1E1E2E",
           padding: "64px 24px 0",
-          fontFamily: "'DM Sans', sans-serif",
+           fontFamily: "'Inter', 'system-ui', sans-serif",
         }}
       >
         <div style={{ maxWidth: 1040, margin: "0 auto" }}>

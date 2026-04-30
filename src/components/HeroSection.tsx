@@ -43,7 +43,8 @@ const HeroSection = () => {
   });
 
   return (
-    <section id="home"
+    <section
+      id="home"
       style={{
         background: "#0A0A0F",
         minHeight: "100vh",
@@ -53,7 +54,7 @@ const HeroSection = () => {
         padding: "0 24px",
         position: "relative",
         overflow: "hidden",
-        fontFamily: "'Cabinet Grotesk', 'DM Sans', sans-serif",
+        fontFamily: "'Inter', 'system-ui', sans-serif",
       }}
     >
       <style>{`
@@ -316,7 +317,7 @@ const HeroSection = () => {
           <motion.div {...fadeUp(0.18)}>
             <p
               style={{
-                 fontFamily: "'DM Mono', 'Fira Code', monospace",
+                fontFamily: "'Inter', 'system-ui', sans-serif",
                 fontSize: 14,
                 color: "#475569",
                 fontWeight: 400,
@@ -329,9 +330,9 @@ const HeroSection = () => {
             </p>
             <h1
               style={{
-                 fontFamily: "'DM Mono', 'Fira Code', monospace",
-                
-                fontSize: "clamp(40px, 6vw, 68px)",
+                fontFamily: "'Inter', 'system-ui', sans-serif",
+
+                fontSize: "clamp(40px, 90px, 68px)",
                 fontWeight: 800,
                 color: "#F1F5F9",
                 lineHeight: 1.08,
@@ -347,7 +348,7 @@ const HeroSection = () => {
           <motion.div {...fadeUp(0.26)} style={{ marginBottom: 20 }}>
             <h2
               style={{
-                fontFamily: "'DM Mono', 'Fira Code', monospace",
+                fontFamily: "'JetBrains Mono', Fira Code, monospace",
                 fontSize: "clamp(18px, 2.8vw, 26px)",
                 fontWeight: 400,
                 color: "#38BDF8",
@@ -361,6 +362,7 @@ const HeroSection = () => {
                 style={{
                   display: "inline-block",
                   width: 2,
+                  fontSize: "24px",
                   height: "1em",
                   background: "#38BDF8",
                   marginLeft: 3,
@@ -376,13 +378,12 @@ const HeroSection = () => {
           <motion.p
             {...fadeUp(0.34)}
             style={{
-               fontFamily: "'DM Mono', 'Fira Code', monospace",
-              fontSize: 15,
+              fontFamily: "'Inter', 'system-ui', sans-serif",
+              fontSize: 18,
               color: "#64748B",
               lineHeight: 1.75,
               maxWidth: 460,
               margin: "0 0 32px",
-              fontWeight: 300,
             }}
           >
             A self-taught developer with 2 years of experience building modern,
@@ -399,7 +400,7 @@ const HeroSection = () => {
               gap: 12,
               flexWrap: "wrap",
               marginBottom: 40,
-               fontFamily: "'DM Mono', 'Fira Code', monospace",
+              fontFamily: "'DM Mono', 'Fira Code', monospace",
             }}
           >
             <a href="#projects" className="btn-primary">

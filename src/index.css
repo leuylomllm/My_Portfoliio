@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 
 /* index.css (or App.css) — add near top */
 html,
@@ -238,11 +239,34 @@ body {
 }
 
 /* Logo */
-.nav-logo {
+/* .nav-logo {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
+} */
+.nav-logo {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+}
+.nav-logo .bracket {
+  color: #38bdf8;
+}
+.nav-logo .slash {
+  color: #7c3aed;
+}
+.nav-logo .name {
+  color: #a78bfa;
+  font-weight: 500;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .nav-logo-mark {
   width: 34px;
@@ -253,8 +277,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Syne", sans-serif;
-  
+  font-family: Inter, system-ui, sans-serif;
+
   font-weight: 800;
   font-size: 16px;
   color: #38bdf8;
@@ -268,7 +292,7 @@ body {
   box-shadow: 0 0 12px #38bdf822;
 }
 .nav-logo-text {
-  font-family: "Syne", sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   font-weight: 700;
   font-size: 15px;
   color: #e2e8f0;
@@ -288,7 +312,7 @@ body {
   position: relative;
   display: block;
   padding: 7px 14px;
-   font-family: 'DM Mono', 'Fira Code', monospace;
+  font-family: JetBrains Mono, Fira Code, monospace;
   font-size: 14px;
   font-weight: 500;
   color: #64748b;
@@ -328,7 +352,7 @@ body {
   color: #0a0a0f;
   padding: 8px 18px;
   border-radius: 10px;
-  font-family: "DM Sans", sans-serif;
+   font-family: Inter, system-ui, sans-serif;
   font-weight: 600;
   font-size: 13px;
   text-decoration: none;
@@ -412,7 +436,7 @@ body {
 .nav-mobile li a {
   display: block;
   padding: 11px 16px;
-  font-family: "DM Sans", sans-serif;
+   font-family: Inter, system-ui, sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #94a3b8;
@@ -444,7 +468,7 @@ body {
   color: #0a0a0f;
   padding: 11px;
   border-radius: 10px;
-  font-family: "DM Sans", sans-serif;
+   font-family: Inter, system-ui, sans-serif;
   font-weight: 600;
   font-size: 13.5px;
   text-decoration: none;
@@ -465,13 +489,12 @@ body {
   }
 }
 
-
 /* === Skill Section === */
 
 .skill-filter-btn {
   padding: 7px 18px;
   border-radius: 9px;
-  font-family: "DM Sans", sans-serif;
+   font-family: Inter, system-ui, sans-serif;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -573,7 +596,7 @@ body {
   gap: 6px;
   padding: 7px 14px;
   border-radius: 9px;
-  font-family: "DM Sans", sans-serif;
+   font-family: Inter, system-ui, sans-serif;
   font-size: 13px;
   font-weight: 500;
   border: 1px solid #1e1e2e;
@@ -599,7 +622,7 @@ body {
   border-radius: 7px;
   background: #111118;
   border: 1px solid #1e1e2e;
-  font-family: "DM Sans", sans-serif;
+   font-family: Inter, system-ui, sans-serif;
   font-size: 12px;
   font-weight: 500;
   color: #38bdf8;
@@ -669,7 +692,7 @@ body {
   gap: 6px;
   padding: 7px 14px;
   border-radius: 8px;
-  font-family: "DM Sans", sans-serif;
+   font-family: Inter, system-ui, sans-serif;
   font-size: 12.5px;
   font-weight: 500;
   text-decoration: none;
@@ -700,7 +723,7 @@ body {
   border-radius: 999px;
   background: #38bdf80d;
   border: 1px solid #38bdf822;
-  font-family: "DM Sans", sans-serif;
+   font-family: Inter, system-ui, sans-serif;
   font-size: 11px;
   font-weight: 500;
   color: #38bdf8;
@@ -781,7 +804,7 @@ body {
   gap: 6px;
 }
 .contact-label {
-  font-family: "DM Sans", sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   font-size: 12px;
   font-weight: 500;
   color: #475569;
@@ -794,7 +817,7 @@ body {
   background: #111118;
   border: 1px solid #1e1e2e;
   border-radius: 10px;
-  font-family: "DM Sans", sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #e2e8f0;
@@ -821,7 +844,7 @@ body {
   width: 100%;
   padding: 13px;
   border-radius: 11px;
-  font-family: "DM Sans", sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   font-size: 14px;
   font-weight: 600;
   display: flex;
@@ -888,7 +911,7 @@ body {
 }
 
 .footer-link {
-  font-family: "DM Sans", sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   font-size: 13.5px;
   font-weight: 400;
   color: #475569;
@@ -927,7 +950,7 @@ body {
 }
 
 .footer-col-title {
-  font-family: "DM Sans", sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.16em;

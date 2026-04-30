@@ -7,7 +7,7 @@ import About from "./components/About";
 import Project from "./components/Project";
 import Contact from "./components/Contact";
 import Skill from "./components/Skill";
-import Experience from "./components/experiences ";
+import Experience from "./components/Experience";
 
 function App() {
   return (

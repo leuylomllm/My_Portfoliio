@@ -1,19 +1,26 @@
 import { motion } from "framer-motion";
-import Me from "../assets/image.jpg";
-
-const SKILLS = [
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Node.js",
-  "Tailwind CSS",
-  "MySQL",
-];
-
-const STATS = [
-  { number: "1+", label: "Years Experience" },
-  // { number: "15+", label: "Projects Built"   },
-  { number: "5+", label: "Technologies" },
+import { Code2, Palette, Database, Rocket } from "lucide-react";
+const CARDS = [
+  {
+    icon: <Code2 />,
+    title: "Frontend Development",
+    desc: "Building responsive and user-friendly interfaces with modern web technologies.",
+  },
+  {
+    icon: <Palette />,
+    title: "UI Implementation",
+    desc: "Translating designs into clean, structured, and interactive user experiences.",
+  },
+  {
+    icon: <Database />,
+    title: "Database Knowledge",
+    desc: "Working with MySQL for data structure, queries, and basic optimization.",
+  },
+  {
+    icon: <Rocket />,
+    title: "Project Delivery",
+    desc: "Developing real-world applications and continuously improving through practice.",
+  },
 ];
 
 export default function About() {
@@ -21,339 +28,228 @@ export default function About() {
     <section
       id="about"
       style={{
-        background: "#0A0A0F",
-        padding: "100px 24px",
-         fontFamily: "'DM Mono', 'Fira Code', monospace",
+        padding: "80px 48px",
+        fontFamily: "'DM Sans', sans-serif",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@700;800;900&family=DM+Sans:wght@300;400;500&display=swap');
 
-        .about-skill-tag {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          padding: 6px 14px;
-          border-radius: 8px;
-          background: #111118;
-          border: 1px solid #1E1E2E;
-          font-family: 'DM Mono', 'Fira Code', monospace;
-          font-size: 12.5px;
-          font-weight: 500;
-          color: #94A3B8;
-          letter-spacing: 0.02em;
-          transition: border-color 0.2s ease, color 0.2s ease, transform 0.18s ease;
-          cursor: default;
-        }
-        .about-skill-tag:hover {
-          border-color: #38BDF855;
-          color: #38BDF8;
-          transform: translateY(-2px);
-        }
-        .about-skill-tag::before {
-          content: '';
-          width: 5px; height: 5px;
-          border-radius: 50%;
-          background: #38BDF8;
-          opacity: 0.6;
-        }
-
-        .about-stat {
-          display: flex;
-          flex-direction: column;
-          gap: 3px;
-          padding: 18px 24px;
-          background: #111118;
-          border: 1px solid #1E1E2E;
-          border-radius: 12px;
-          flex: 1;
-          transition: border-color 0.25s ease, transform 0.2s ease;
-        }
-        .about-stat:hover {
-          border-color: #38BDF833;
-          transform: translateY(-2px);
-        }
-        .about-stat-num {
-           font-family: 'DM Mono', 'Fira Code', monospace;
-          font-size: 26px;
-          font-weight: 800;
-          color: #F1F5F9;
-          line-height: 1;
-        }
-        .about-stat-label {
-           font-family: 'DM Mono', 'Fira Code', monospace;
-          font-size: 12px;
-          color: #475569;
-          font-weight: 400;
-          letter-spacing: 0.04em;
-        }
-
-        .about-img-wrap {
-          position: relative;
-          width: 100%;
-          max-width: 400px;
-          aspect-ratio: 4/5;
-          border-radius: 20px;
-          overflow: hidden;
-          border: 1px solid #1E1E2E;
-          background: #111118;
-          transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .about-img-wrap:hover {
-          border-color: #38BDF833;
-          box-shadow: 0 0 48px #38BDF811;
-        }
-        .about-img-wrap img {
-          width: 100%; height: 100%;
-          object-fit: cover;
-          display: block;
-          transition: transform 0.5s ease;
-        }
-        .about-img-wrap:hover img {
-          transform: scale(1.03);
-        }
-
-        /* Floating badge */
-        .about-badge {
-          position: absolute;
-          bottom: 24px;
-          left: -20px;
-          background: #111118;
-          border: 1px solid #1E1E2E;
-          border-radius: 12px;
-          padding: 12px 16px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          box-shadow: 0 8px 32px #00000066;
-          backdrop-filter: blur(12px);
-        }
-        .about-badge-dot {
-          width: 8px; height: 8px;
-          border-radius: 50%;
-          background: #22C55E;
-          box-shadow: 0 0 0 3px #22C55E22;
-          animation: badge-pulse 2s ease-in-out infinite;
-          flex-shrink: 0;
-        }
-        @keyframes badge-pulse {
-          0%,100% { box-shadow: 0 0 0 3px #22C55E22; }
-          50%      { box-shadow: 0 0 0 6px #22C55E11; }
-        }
-        .about-badge-text {
-           font-family: 'DM Mono', 'Fira Code', monospace;
-          font-size: 12px;
-          color: #94A3B8;
-          font-weight: 400;
-          white-space: nowrap;
-        }
-        .about-badge-text strong {
-          color: #E2E8F0;
-          font-weight: 600;
-        }
-
-        .about-corner-tag {
-          position: absolute;
-          top: 20px;
-          right: -16px;
-          background: #38BDF8;
-          color: #0A0A0F;
-           font-family: 'DM Mono', 'Fira Code', monospace;
-          font-size: 11px;
-          font-weight: 800;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          padding: 6px 12px;
-          border-radius: 8px;
-          box-shadow: 0 4px 16px #38BDF844;
-        }
-
-        .divider-line {
-          width: 40px; height: 2px;
-          background: linear-gradient(90deg, #38BDF8, #A78BFA);
-          border-radius: 2px;
-          margin-bottom: 20px;
-        }
-
-        @media (max-width: 900px) {
-          .about-grid { flex-direction: column !important; }
-          .about-img-side { align-items: center !important; }
-          .about-badge { left: 12px !important; }
-          .about-corner-tag { right: 12px !important; 
+          /* Subtle grid background */
+          #about::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+           
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
           }
-        }
-      `}</style>
 
-      <div style={{ maxWidth: 1040, margin: "0 auto" }}>
+          .about-section-label {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: JetBrains Mono, Fira Code, monospace;
+            font-size: 14px;
+            letter-spacing: 0.2em;
+            color: #22D3EE;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 52px;
+            position: relative;
+            z-index: 1;
+          }
+          .about-section-label::after {
+            content: '';
+            flex: 1;
+            max-width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, #22D3EE44, transparent);
+          }
+
+          .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            position: relative;
+            z-index: 1;
+          }
+
+          .about-headline {
+             font-family: Inter, system-ui, sans-serif;
+            font-size: clamp(36px, 48px, 58px);
+            font-weight: 900;
+            line-height: 1.05;
+            color: #F8FAFC;
+            margin-bottom: 32px;
+            letter-spacing: -0.02em;
+          }
+          .about-headline .accent {
+            background: linear-gradient(135deg, #22D3EE 0%, #6366F1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+
+          .about-bio {
+             font-family: Inter, system-ui, sans-serif;
+            font-size: 16px;
+            color: #ffffff80;
+            line-height: 1.9;
+            margin-bottom: 20px;
+          }
+
+          .about-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+          }
+
+          .about-card {
+            background: #0D1220;
+             font-family: Inter, system-ui, sans-serif;
+            border: 1px solid #1A2235;
+            border-radius: 16px;
+            padding: 28px 24px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+            cursor: default;
+          }
+          .about-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, #22D3EE08, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+          }
+          .about-card:hover {
+            border-color: #22D3EE33;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px #00000066;
+          }
+          .about-card:hover::before { opacity: 1; }
+
+          .about-card-icon {
+            width: 44px;
+            height: 44px;
+            background: #131C2E;
+            border: 1px solid #1E2D45;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            transition: border-color 0.3s ease, background 0.3s ease;
+          }
+          .about-card:hover .about-card-icon {
+            background: #162036;
+            border-color: #22D3EE44;
+          }
+
+          .about-card-title {
+             font-family: Inter, system-ui, sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #F1F5F9;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+          }
+
+          .about-card-desc {
+            font-family: Inter, system-ui, sans-serif;
+            font-size: 12px;
+            color: #ffffff66;
+            line-height: 1.7;
+          }
+
+          @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+            #about { padding: 60px 24px !important; }
+          }
+          @media (max-width: 540px) {
+            .about-cards-grid { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
+
+      <div style={{ maxWidth: 1140, margin: "0 auto" }}>
         {/* Section label */}
         <motion.div
-          initial={{ opacity: 0, y: -12 }}
+          className="about-section-label"
+          initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          style={{ marginBottom: 64 }}
         >
-          <p
-            style={{
-              fontFamily: "'DM Mono', 'Fira Code', monospace",
-              fontSize: 12,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "#38BDF8",
-              fontWeight: 500,
-              marginBottom: 10,
-            }}
-          >
-            About Me
-          </p>
-          <h2
-            style={{
-               fontFamily: "'DM Mono', 'Fira Code', monospace",
-              fontSize: "clamp(30px, 4.5vw, 48px)",
-              fontWeight: 800,
-              color: "#F1F5F9",
-              lineHeight: 1.1,
-              margin: 0,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Passionate about
-            <br />
-            <span style={{ color: "#38BDF8" }}>building the web.</span>
-          </h2>
+          01. &nbsp;About Me
         </motion.div>
 
-        {/* Grid */}
-        <div
-          className="about-grid"
-          style={{ display: "flex", gap: 72, alignItems: "flex-start" }}
-        >
-          {/* LEFT — Text */}
+        <div className="about-grid">
+          {/* LEFT — Headline + bio */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
+            initial={{ opacity: 0, x: -28 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            style={{ flex: 1, minWidth: 0 }}>
-            <div className="divider-line" />
-            <p
-              style={{
-                fontFamily: "'DM Mono', 'Fira Code', monospace",
-                fontSize: 16,
-                color: "#64748B",
-                lineHeight: 1.85,
-                margin: "0 0 14px",
-                fontWeight: 300,
-              }}
-            >
-              I'm a web developer who loves crafting intuitive and responsive
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h2 className="about-headline">
+              Building resilient
+              <br />
+              software,
+              <br />
+              <span className="accent">from product to data platform</span>
+            </h2>
+
+            <p className="about-bio">
+              I'm a web developer focused on building intuitive and responsive
               applications. With over{" "}
-              <span style={{ color: "#E2E8F0", fontWeight: 500 }}>
-                1+ years of experience
+              <span style={{ color: "#CBD5E1", fontWeight: 500 }}>
+                a year of experience
               </span>
-              , I focus on clean, scalable solutions that solve real problems
-              and deliver seamless digital experiences.
+              , I create clean and maintainable solutions that solve real-world
+              problems and deliver smooth user experiences.
             </p>
 
-            <p
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: 16,
-                color: "#64748B",
-                lineHeight: 1.85,
-                margin: "0 0 32px",
-                fontWeight: 300,
-              }}
-            >
-              I enjoy every part of the development process — from translating
-              designs into pixel-perfect UIs to architecting backend systems
-              that perform at scale.
+            <p className="about-bio">
+              I enjoy the development process — from translating designs into
+              user-friendly interfaces to working with backend systems and
+              improving application performance.
             </p>
-
-            {/* Skills */}
-            <div style={{ marginBottom: 36 }}>
-              <p
-                style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 11,
-                  letterSpacing: "0.16em",
-                  textTransform: "uppercase",
-                  color: "#334155",
-                  fontWeight: 500,
-                  marginBottom: 14,
-                }}
-              >
-                Core Technologies
-              </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {SKILLS.map((s) => (
-                  <span key={s} className="about-skill-tag">
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Stats */}
-            <div style={{ display: "flex", gap: 12 }}>
-              {STATS.map((s, i) => (
-                <motion.div
-                  key={i}
-                  className="about-stat"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 + i * 0.08, duration: 0.45 }}
-                >
-                  <span className="about-stat-num">{s.number}</span>
-                  <span className="about-stat-label">{s.label}</span>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
 
-          {/* RIGHT — Image */}
+          {/* RIGHT — Feature cards */}
           <motion.div
-            className="about-img-side"
-            initial={{ opacity: 0, x: 24 }}
+            className="about-cards-grid"
+            initial={{ opacity: 0, x: 28 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            style={{
-              flexShrink: 0,
-              width: 340,
-              display: "flex",
-              flexDirection: "column",
-              position: "relative",
+            transition={{
+              duration: 0.65,
+              ease: [0.22, 1, 0.36, 1],
+              delay: 0.1,
             }}
           >
-            <div className="about-img-wrap">
-              <img src={Me} alt="Lom Leuy" />
-
-              {/* Gradient overlay at bottom */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: "35%",
-                  background: "linear-gradient(to top, #0A0A0Fcc, transparent)",
-                  pointerEvents: "none",
-                }}
-              />
-            </div>
-
-            {/* Floating badge — available */}
-            <div className="about-badge">
-              <span className="about-badge-dot" />
-              <span className="about-badge-text">
-                <strong>Open to work</strong> · Full-time
-              </span>
-            </div>
-
-            {/* Corner tag */}
-            <div className="about-corner-tag">Dev</div>
+            {CARDS.map((card, i) => (
+              <motion.div
+                key={i}
+                className="about-card"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.15 + i * 0.08, duration: 0.45 }}
+              >
+                <div className="about-card-icon">{card.icon}</div>
+                <div className="about-card-title">{card.title}</div>
+                <div className="about-card-desc">{card.desc}</div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </div>
