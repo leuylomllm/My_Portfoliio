@@ -20,7 +20,14 @@ import ecommerce3 from "../assets/ecommerce3.png";
 import ecommerce4 from "../assets/ecommerce4.png";
 import ecommerce5 from "../assets/ecommerce5.png";
 import ecommerce6 from "../assets/ecommerce6.png";
-const Image: { shoes: string; ecom: string; movie: string; tour: string; recipe: string; weather: string; tour1: string, rcipe1: string, movie1: string, shoes1: string, profile: string, invent1: string, invent2: string, invent3: string, invent4: string, invent5: string, ecommerce1: string, ecommerce2: string, ecommerce3: string, ecommerce4: string, ecommerce5: string, ecommerce6: string } = {
+import movie2 from "../assets/movie2.png";
+import movie3 from "../assets/movie3.png";
+import movie4 from "../assets/movie4.png";
+import movie5 from "../assets/movie5.png";
+import movie6 from "../assets/movie6.png";
+import recipe3 from "../assets/recipe3.png"
+import recipe4 from "../assets/recipe4.png"
+const Image: { recipe3: string; recipe4: string; shoes: string; ecom: string; movie: string; tour: string; recipe: string; weather: string; tour1: string, rcipe1: string, movie1: string, shoes1: string, profile: string, invent1: string, invent2: string, invent3: string, invent4: string, invent5: string, ecommerce1: string, ecommerce2: string, ecommerce3: string, ecommerce4: string, ecommerce5: string, ecommerce6: string, movie2: string, movie3: string, movie4: string, movie5: string, movie6: string } = {
     shoes,
     ecom,
     movie,
@@ -42,7 +49,14 @@ const Image: { shoes: string; ecom: string; movie: string; tour: string; recipe:
     ecommerce3,
     ecommerce4,
     ecommerce5,
-    ecommerce6
+    ecommerce6,
+    movie2,
+    movie3,
+    movie4,
+    movie5,
+    movie6,
+    recipe3,
+    recipe4,
 }
 
 export default Image

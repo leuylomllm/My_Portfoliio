@@ -101,6 +101,15 @@ const projects: Project[] = [
       "TypeScript for type safety",
     ],
     image: Image.movie1,
+    images: [
+      Image.movie1,
+      Image.movie2,
+      Image.movie3,
+
+      Image.movie4,
+      Image.movie5,
+      Image.movie6,
+    ],
     demo: "https://movies-two-lime.vercel.app/",
     code: "https://github.com/leuy-llm/Movie",
     category: "web",
@@ -137,6 +146,11 @@ const projects: Project[] = [
       "Responsive recipe grid",
     ],
     image: Image.rcipe1,
+    images: [
+        Image.rcipe1,
+            Image.recipe3,
+            Image.recipe4,
+    ],
     demo: "https://reciep-finder.vercel.app/",
     code: "https://github.com/leuylomllm/Reciep_Finder",
     category: "webapp",
