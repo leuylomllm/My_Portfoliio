@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Github,
@@ -17,7 +17,8 @@ interface Project {
   description: string;
   technologies: string[];
   highlights: string[];
-  image: string;
+  image: string; // keep for fallback
+  images?: string[]; // 👈 NEW
   demo?: string;
   code?: string;
   category: string;
@@ -26,46 +27,66 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "ShoeStore",
-    subtitle: "Full-Stack E-Commerce Project",
-    description:
-      "An online shoe store built with modern technologies featuring API-driven product management, cart functionality, and smooth animations.",
-    technologies: ["React", "Tailwind CSS", "TypeScript"],
-    highlights: [
-      "Fully responsive interface using Tailwind CSS",
-      "API-driven product management system",
-      "Cart functionality and product filters",
-      "Enhanced UX with smooth animations",
+    title: "IMS",
+    subtitle: "Inventory Management System",
+    description: "A full-stack inventory management system...",
+    technologies: [
+      "React",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "MYSQL",
     ],
-    image: Image.shoes1,
-    demo: "https://sell-shoes-eight.vercel.app/",
-    code: "https://github.com/leuy-llm/sell-shoes",
+    highlights: ["Secure authentication", "Real-time inventory updates"],
+    image: Image.invent1,
+    images: [
+      Image.invent1,
+      Image.invent2,
+      Image.invent3,
+      Image.invent4,
+      Image.invent5,
+    ],
+    demo: "https://github.com/leuylomllm/inventory-dash",
+    codeFrontend: "https://github.com/leuylomllm/inventory-dash",
+    codeBackend: "https://github.com/leuylomllm/inventory",
     category: "fullstack",
   },
-  // {
-  //   id: 2,
-  //   title: "E-Shop",
-  //   subtitle: "E-Commerce Platform",
-  //   description:
-  //     "A scalable e-commerce platform with secure authentication, real-time stock management, and a built-in admin dashboard.",
-  //   technologies: [
-  //     "React",
-  //     "Tailwind CSS",
-  //     "TypeScript",
-  //     "Clerk Auth",
-  //     "FakeStore API",
-  //   ],
-  //   highlights: [
-  //     "Secure user authentication using Clerk",
-  //     "Real-time stock management",
-  //     "Responsive admin dashboard",
-  //     "Optimized for fast load times",
-  //   ],
-  //   image: Image.ecom,
-  //   demo: "https://e-commerece-kohl.vercel.app/",
-  //   code: "https://github.com/leuy-llm/e-commerece",
-  //   category: "web",
-  // },
+  {
+    id: 2,
+    title: "E-Shop",
+    subtitle: "E-Commerce Platform",
+    description:
+      "A scalable e-commerce platform with secure authentication, real-time stock management, and a built-in admin dashboard.",
+    technologies: [
+      "React",
+      "Tailwind CSS",
+      "TypeScript",
+      "Clerk Auth",
+      "DUMY API",
+    ],
+    highlights: [
+      "Secure user authentication using Clerk",
+      "Real-time stock management",
+      "Responsive admin dashboard",
+      "Optimized for fast load times",
+    ],
+    image: Image.ecommerce1,
+    images: [
+      Image.ecommerce1,
+      Image.ecommerce2,
+      Image.ecommerce3,
+
+      Image.ecommerce4,
+      Image.ecommerce5,
+      Image.ecommerce6,
+    ],
+    // demo: "https://e-commerece-kohl.vercel.app/",
+    codeFrontend: "https://github.com/leuylomllm/ecommerce",
+    codeBackend: " https://dummyjson.com/products",
+
+    category: "web",
+  },
   {
     id: 3,
     title: "CineView",
@@ -84,26 +105,26 @@ const projects: Project[] = [
     code: "https://github.com/leuy-llm/Movie",
     category: "web",
   },
+//   {
+//     id: 4,
+//     title: "Ecommerce",
+//     subtitle: "E-Commerce Storefront",
+//     description:
+//       "A modern e-commerce storefront with dynamic product listings, Google Maps integration for store locations, and a focus on responsive design and accessibility.",
+//     technologies: ["React", "Tailwind CSS", "Vite", "TypeScript", "F API"],
+//     highlights: [
+//       "Dynamic destination listings",
+//       "Google Maps integration",
+//       "Responsive layouts",
+//       "Accessibility & smooth navigation",
+//     ],
+//     image: Image.tour1,
+//     demo: "https://tour-sable.vercel.app/",
+//     code: "https://github.com/leuy-llm/tour",
+//     category: "webapp",
+//   },
   {
     id: 4,
-    title: "ExploreCambodia",
-    subtitle: "Tourism Web Application",
-    description:
-      "A tourism platform built with Vue.js that lets users explore destinations, view maps, and discover travel experiences.",
-    technologies: ["Vue", "Tailwind CSS", "PrimeVue", "Vite", "TypeScript"],
-    highlights: [
-      "Dynamic destination listings",
-      "Google Maps integration",
-      "Responsive layouts",
-      "Accessibility & smooth navigation",
-    ],
-    image: Image.tour1,
-    demo: "https://tour-sable.vercel.app/",
-    code: "https://github.com/leuy-llm/tour",
-    category: "webapp",
-  },
-  {
-    id: 5,
     title: "TastyHub",
     subtitle: "Recipe Finder App",
     description:
@@ -121,7 +142,7 @@ const projects: Project[] = [
     category: "webapp",
   },
   {
-    id: 6,
+    id: 5,
     title: "SkyCast",
     subtitle: "Weather Forecast App",
     description:
@@ -151,7 +172,9 @@ export default function Project() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [direction, setDirection] = useState(1);
-
+  const [imgIndex, setImgIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [imgDirection, setImgDirection] = useState(1);
   const go = (idx: number, dir: number) => {
     if (isAnimating) return;
     setDirection(dir);
@@ -160,11 +183,23 @@ export default function Project() {
     setTimeout(() => setIsAnimating(false), 500);
   };
 
+  const current = projects[currentIndex];
+  const images = current.images ?? [current.image];
+  const currentImg = images[imgIndex];
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setImgIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [images.length, isPaused]);
+
   const handleNext = () => go((currentIndex + 1) % projects.length, 1);
   const handlePrev = () =>
     go((currentIndex - 1 + projects.length) % projects.length, -1);
-
-  const current = projects[currentIndex];
 
   const slideVariants = {
     enter: (d: number) => ({ opacity: 0, x: d > 0 ? 40 : -40 }),
@@ -189,8 +224,6 @@ export default function Project() {
         fontFamily: "'DM Sans', sans-serif",
       }}
     >
-     
-
       <div style={{ maxWidth: 1080, margin: "0 auto" }}>
         {/* Header */}
         <motion.div
@@ -327,18 +360,115 @@ export default function Project() {
                           {current.demo?.replace("https://", "") ?? "preview"}
                         </span>
                       </div>
-                      <div style={{ paddingTop: 36, overflow: "hidden" }}>
-                        <img
-                          src={current.image}
-                          alt={current.title}
-                          style={{
-                            width: "100%",
-                            aspectRatio: "16/10",
-                            objectFit: "cover",
-                            objectPosition: "top",
-                            display: "block",
+                      <div
+                        onMouseEnter={() => setIsPaused(true)}
+                        onMouseLeave={() => setIsPaused(false)}
+                        style={{
+                          position: "relative", // 👈 IMPORTANT
+                          paddingTop: 36,
+                          overflow: "hidden",
+                        }}
+                      >
+                        <AnimatePresence mode="wait" custom={imgDirection}>
+                          <motion.img
+                            key={currentImg}
+                            custom={imgDirection}
+                            initial={(dir) => ({
+                              opacity: 0,
+                              x: dir > 0 ? 40 : -40,
+                            })}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={(dir) => ({
+                              opacity: 0,
+                              x: dir > 0 ? -40 : 40,
+                            })}
+                            transition={{ duration: 0.4 }}
+                            src={currentImg}
+                            alt={current.title}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </AnimatePresence>
+                        {/* LEFT */}
+                        <button
+                          onClick={() => {
+                            setIsPaused(true);
+                            setImgDirection(-1);
+                            setImgIndex(
+                              (prev) =>
+                                (prev - 1 + images.length) % images.length,
+                            );
                           }}
-                        />
+                          style={{
+                            position: "absolute",
+                            top: "50%",
+                            left: 10,
+                            transform: "translateY(-50%)",
+                            background: "#00000088",
+                            color: "#fff",
+                            border: "none",
+                            borderRadius: "50%",
+                            width: 36,
+                            height: 36,
+                            cursor: "pointer",
+                          }}
+                        >
+                          <span style={{ fontSize: 20 }}>‹</span>
+                        </button>
+
+                        {/* RIGHT */}
+                        <button
+                          onClick={() => {
+                            setIsPaused(true);
+                            setImgDirection(1);
+                            setImgIndex((prev) => (prev + 1) % images.length);
+                          }}
+                          style={{
+                            position: "absolute",
+                            top: "50%",
+                            right: 10,
+                            transform: "translateY(-50%)",
+                            background: "#00000088",
+                            color: "#fff",
+                            border: "none",
+                            borderRadius: "50%",
+                            width: 36,
+                            height: 36,
+                            cursor: "pointer",
+                          }}
+                        >
+                          <span style={{ fontSize: 20 }}>›</span>
+                        </button>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          gap: 6,
+                          marginTop: 15,
+                          marginBottom: 15,
+                        }}
+                      >
+                        {images.map((_, i) => (
+                          <div
+                            key={i}
+                            onClick={() => {
+                              setIsPaused(true);
+                              setImgIndex(i);
+                            }}
+                            style={{
+                              width: i === imgIndex ? 20 : 6,
+                              height: 6,
+                              borderRadius: 999,
+                              background: i === imgIndex ? "#facc15" : "#444",
+                              cursor: "pointer",
+                              transition: "all 0.3s",
+                            }}
+                          />
+                        ))}
                       </div>
                     </div>
 
@@ -542,16 +672,37 @@ export default function Project() {
                           <Globe size={13} /> Live Demo
                         </a>
                       )}
-                      {current.code && (
+                      {current.codeFrontend && (
                         <a
-                          href={current.code}
+                          href={current.codeFrontend}
                           target="_blank"
-                          rel="noopener noreferrer"
                           className="proj-link-btn code"
                         >
-                          <Github size={13} /> Source Code
+                          <Github size={13} /> Frontend
                         </a>
                       )}
+
+                      {current.codeBackend && (
+                        <a
+                          href={current.codeBackend}
+                          target="_blank"
+                          className="proj-link-btn code"
+                        >
+                          <Github size={13} /> Backend
+                        </a>
+                      )}
+
+                      {current.code &&
+                        !current.codeFrontend &&
+                        !current.codeBackend && (
+                          <a
+                            href={current.code}
+                            target="_blank"
+                            className="proj-link-btn code"
+                          >
+                            <Github size={13} /> Code
+                          </a>
+                        )}
                     </div>
                   </motion.div>
                 </AnimatePresence>
