@@ -109,7 +109,7 @@ export default function Project() {
     >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@700;800;900&family=DM+Sans:wght@300;400;500&display=swap');
-
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         /* Subtle grid bg */
         #projects::before {
           content: '';
@@ -127,7 +127,7 @@ export default function Project() {
           display: flex;
           align-items: center;
           gap: 14px;
-          font-family: JetBrains Mono, Fira Code, monospace;
+         font-family: 'JetBrains Mono', 'Fira Code', monospace;
          font-size: 14px;
           letter-spacing: 0.2em;
           color: #22D3EE;
@@ -225,7 +225,7 @@ export default function Project() {
         }
 
         .proj-num {
-          font-family: JetBrains Mono, Fira Code, monospace;
+         font-family: 'JetBrains Mono', 'Fira Code', monospace;
           font-size: 12px;
           color: rgb(0, 212, 255);
           font-weight: 400;
@@ -286,8 +286,7 @@ export default function Project() {
           margin-top: auto;
         }
         .proj-tag {
-          font-family: JetBrains Mono, Fira Code, monospace;
-          font-size: 12px;
+          font-family: 'JetBrains Mono', 'Fira Code', monospace;
           color: #ffffff66;
           background: #111827;
           border: 1px solid #1E293B;

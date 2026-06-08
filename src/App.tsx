@@ -25,7 +25,7 @@ function App() {
       {/* Each section handles its own padding internally */}
       <main>
         <HeroSection id="home" />
-        <TechStack id="skills" />
+        {/* <TechStack id="skills" /> */}
         <About id="about" />
         <Skill id="skill" />
         <Project id="projects" />

@@ -3,23 +3,23 @@ import { Code2, Palette, Database, Rocket } from "lucide-react";
 const CARDS = [
   {
     icon: <Code2 />,
-    title: "Frontend Development",
-    desc: "Building responsive and user-friendly interfaces with modern web technologies.",
+    title: "IT Skills",
+    desc: "Able to use computers and build simple web applications.",
   },
   {
     icon: <Palette />,
-    title: "UI Implementation",
-    desc: "Translating designs into clean, structured, and interactive user experiences.",
+    title: "Communication",
+    desc: "Able to communicate clearly and work with others effectively.",
   },
   {
     icon: <Database />,
-    title: "Database Knowledge",
-    desc: "Working with MySQL for data structure, queries, and basic optimization.",
+    title: "Problem Solving",
+    desc: "Able to analyze problems and find practical solutions.",
   },
   {
     icon: <Rocket />,
-    title: "Project Delivery",
-    desc: "Developing real-world applications and continuously improving through practice.",
+    title: "Teamwork & Learning",
+    desc: "Work well in a team and always willing to learn new skills.",
   },
 ];
 
@@ -52,7 +52,7 @@ export default function About() {
             display: flex;
             align-items: center;
             gap: 14px;
-            font-family: JetBrains Mono, Fira Code, monospace;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
             font-size: 14px;
             letter-spacing: 0.2em;
             color: #22D3EE;
@@ -208,19 +208,15 @@ export default function About() {
             </h2>
 
             <p className="about-bio">
-              I'm a web developer focused on building intuitive and responsive
-              applications. With over{" "}
-              <span style={{ color: "#CBD5E1", fontWeight: 500 }}>
-                a year of experience
-              </span>
-              , I create clean and maintainable solutions that solve real-world
-              problems and deliver smooth user experiences.
+              I am an IT graduate with hands-on experience in building simple
+              web applications. I have worked with both frontend and backend
+              technologies and enjoy learning new tools.
             </p>
 
             <p className="about-bio">
-              I enjoy the development process — from translating designs into
-              user-friendly interfaces to working with backend systems and
-              improving application performance.
+              I am responsible, eager to learn, and able to work both
+              independently and in a team. I am looking for an opportunity to
+              apply my skills and grow professionally.
             </p>
           </motion.div>
 

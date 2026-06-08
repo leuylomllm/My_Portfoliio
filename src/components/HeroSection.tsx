@@ -1,15 +1,26 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import Me from "../assets/Me.png";
-import resume from "../assets/cv.pdf";
+import Me from "../assets/elipe.png";
+import LomLeuyPDF from "../assets/Lom Leuy.pdf";
+import ReactDOMServer from "react-dom/server";
 
-const ROLES = ["Web Developer."];
+const ROLES = ["Web Developer.", "IT Graduate.", "Problem Solver."];
 
 const HeroSection = () => {
   const [typedText, setTypedText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const timerRef = useRef(null);
+  const [mode, setMode] = useState("it");
+
+const downloadResume = () => {
+  const link = document.createElement("a");
+  link.href = LomLeuyPDF;
+  link.download = "Lom Leuy.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
   // Typewriter
   useEffect(() => {
@@ -297,8 +308,7 @@ const HeroSection = () => {
               src={Me}
               alt="Lom Leuy"
               style={{
-                width: "82%",
-                height: "82%",
+               width: "100%",
                 objectFit: "contain",
                 borderRadius: "50%",
                 position: "relative",
@@ -386,9 +396,9 @@ const HeroSection = () => {
               margin: "0 0 32px",
             }}
           >
-            A self-taught developer with 2 years of experience building modern,
-            responsive web apps. I write clean code and craft digital
-            experiences that balance great UX with solid engineering.
+            A motivated IT graduate with experience in web development,
+            problem-solving, and teamwork. Adaptable and eager to contribute to
+            different roles while continuously learning new skills.
           </motion.p>
 
           {/* Buttons */}
@@ -415,23 +425,18 @@ const HeroSection = () => {
                 />
               </svg>
             </a>
-            <a
-              href={resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline"
-            >
-              Download CV
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path
-                  d="M7 1v8M3 9l4 4 4-4M1 13h12"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
+            <button onClick={downloadResume} className="btn-outline">
+  Download CV
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+    <path
+      d="M7 1v8M3 9l4 4 4-4M1 13h12"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+</button>
           </motion.div>
 
           {/* Stats */}
@@ -441,18 +446,18 @@ const HeroSection = () => {
             style={{ display: "flex", alignItems: "center", gap: 24 }}
           >
             <div className="stat-item">
-              <span className="stat-number">1+</span>
-              <span className="stat-label">Years Exp.</span>
+              <span className="stat-number">Strong</span>
+              <span className="stat-label">Teamwork</span>
             </div>
             <div className="stat-divider" />
-            {/* <div className="stat-item">
-              <span className="stat-number">15+</span>
-              <span className="stat-label">Projects</span>
-            </div> */}
+            <div className="stat-item">
+              <span className="stat-number">Fast</span>
+              <span className="stat-label">Learner</span>
+            </div>
             <div className="stat-divider" />
             <div className="stat-item">
-              <span className="stat-number">5+</span>
-              <span className="stat-label">Tech Stack</span>
+              <span className="stat-number">Responsible</span>
+              <span className="stat-label">Worker</span>
             </div>
           </motion.div>
         </div>

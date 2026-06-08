@@ -1,188 +1,279 @@
-import { Mail, Phone, MapPin, Code, Briefcase, GraduationCap } from 'lucide-react';
-import Image from '../assets/Image';
+import React from "react";
 
-export default function Resume() {
+// ─── Data ───────────────────────────────────────────────
+const CV_DATA = {
+  name: { first: "Leuy", last: "Lom" },
+  role: "Web Developer",
+  subtitle: "Web Developer · Frontend Engineer · Vue.js & React Specialist",
+  tags: ["Open to opportunities", "2+ yrs experience", "Siem Reap, Cambodia"],
+
+  contact: {
+    phone: "097 58 94 543",
+    email: "leuylom022@gmail.com",
+    address: "Viheachin, Svay Dangkum, Krong Siem Reap, Siem Reap, Cambodia",
+  },
+
+  techStack: [
+    "HTML", "CSS", "JavaScript", "TypeScript",
+    "Vue.js", "React.js", "Node.js", "Laravel",
+    "Tailwind CSS", "MySQL", "Photoshop", "Canva", "MS Office",
+  ],
+
+  softSkills: ["Creativity", "Negotiation", "Critical Thinking", "Teamwork", "Communication"],
+
+  languages: [
+    { name: "Khmer", level: "Native", dots: 5 },
+    { name: "English", level: "Intermediate", dots: 3 },
+  ],
+
+  profile:
+    "Passionate and motivated Web Developer with experience building responsive and user-friendly web applications. Strong background in modern frontend technologies and backend integration. Dedicated to writing clean, maintainable code and continuously improving skills.",
+
+  experience: [
+    {
+      role: "Web Developer",
+      company: "IT Khmer Company",
+      period: "2024 – 2026",
+      bullets: [
+        "Promoted from a 3-month internship to full-time Web Developer based on strong performance.",
+        "Developed responsive and user-friendly web interfaces using Tailwind CSS, SCSS, PrimeVue, PrimeFlex, JavaScript, TypeScript, and Vue.js.",
+        "Designed and integrated RESTful APIs using Node.js, Fastify, and MySQL.",
+        "Optimized system performance, improving scalability and maintainability.",
+        "Collaborated with cross-functional teams to deliver high-quality web applications on time.",
+      ],
+    },
+  ],
+
+  education: [
+    { degree: "Bachelor of Information Technology", school: "Build Bright University — Siem Reap, Cambodia", year: "2022 – 2025" },
+    { degree: "Diploma in General Education", school: "Techo Sen Samrong High School — Oddor Meanchey", year: "2018 – 2021" },
+    { degree: "Secondary School Education", school: "Samrong Secondary School — Oddor Meanchey", year: "2015 – 2018" },
+    { degree: "Primary School Education", school: "Donken Phneat Primary School — Oddor Meanchey", year: "2009 – 2015" },
+  ],
+};
+
+// ─── Sub-components ──────────────────────────────────────
+const SideLabel: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <p style={{ fontSize: 9, letterSpacing: "0.15em", textTransform: "uppercase", color: "#555", marginBottom: 10, fontWeight: 600 }}>
+    {children}
+  </p>
+);
+
+const Divider = () => <div style={{ height: 0.5, background: "#222" }} />;
+
+const LangDots: React.FC<{ filled: number; total?: number }> = ({ filled, total = 5 }) => (
+  <div style={{ display: "flex", gap: 3, marginTop: 3 }}>
+    {Array.from({ length: total }).map((_, i) => (
+      <div
+        key={i}
+        style={{
+          width: 5, height: 5, borderRadius: "50%",
+          background: i < filled ? "#e0deda" : "#252526",
+          border: i < filled ? "none" : "0.5px solid #333",
+        }}
+      />
+    ))}
+  </div>
+);
+
+// ─── Sidebar ─────────────────────────────────────────────
+const Sidebar: React.FC = () => {
+  const { name, role, contact, techStack, softSkills, languages } = CV_DATA;
+
   return (
-    <div className="py-20">
-      <div className="max-w-5xl mx-auto w-full bg-white rounded-2xl shadow-2xl overflow-hidden">
-        {/* Header Section */}
-        <div className="bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900 text-white p-10">
-          <div className="flex items-center gap-8">
-            <div className="w-36 h-36  shadow-xl overflow-hidden bg-slate-600 flex-shrink-0">
-              <div className="w-full h-full flex items-center justify-center text-4xl font-bold">
-                <img src={Image.profile} alt="" />
-              </div>
-            </div>
-            <div className="flex-1">
-              <h1 className="text-5xl font-bold mb-2 tracking-tight">LOM LEUY</h1>
-              <p className="text-xl text-slate-300">Computer Instructor</p>
-            </div>
-          </div>
+    <aside
+      style={{
+        background: "#0f0f10", color: "#e8e6e0",
+        padding: "28px 20px", display: "flex", flexDirection: "column", gap: 20,
+        minHeight: "100%",
+      }}
+    >
+      {/* Avatar + Name */}
+      <div style={{ textAlign: "center" }}>
+        <div
+          style={{
+            width: 68, height: 68, borderRadius: "50%", background: "#1e1e20",
+            border: "1.5px solid #333", display: "flex", alignItems: "center",
+            justifyContent: "center", margin: "0 auto 10px",
+            fontSize: 18, fontWeight: 700, color: "#e8e6e0", letterSpacing: -1,
+          }}
+        >
+          {name.first[0]}{name.last[0]}
         </div>
+        <p style={{ fontSize: 14, fontWeight: 700, color: "#f0ede6" }}>{name.first} {name.last}</p>
+        <p style={{ fontSize: 9, color: "#555", marginTop: 3, letterSpacing: "0.1em", textTransform: "uppercase" }}>{role}</p>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-          {/* Left Sidebar */}
-          <div className="bg-slate-50 p-8 space-y-8">
-            {/* Contact */}
-            <section>
-              <h2 className="text-2xl font-bold text-slate-800 mb-4 pb-2 border-b-2 border-slate-300">CONTACT</h2>
-              <div className="space-y-3 text-sm">
-                <div className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 mt-1 text-slate-600 flex-shrink-0" />
-                  <span className="text-slate-700">097 58 94 543</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 mt-1 text-slate-600 flex-shrink-0" />
-                  <span className="text-slate-700 break-all">leuylom022@gmail.com</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 mt-1 text-slate-600 flex-shrink-0" />
-                  <span className="text-slate-700">Vithealthin, Khan Doeum, Krong Siem Reap, Siem Reap</span>
-                </div>
-              </div>
-            </section>
+      <Divider />
 
-            {/* Technical Skills */}
-            <section>
-              <h2 className="text-2xl font-bold text-slate-800 mb-4 pb-2 border-b-2 border-slate-300">TECHNICAL SKILLS</h2>
-              <div className="space-y-4 text-sm">
-                <div>
-                  <h3 className="font-semibold text-slate-700 mb-2">Programming & Tools:</h3>
-                  <p className="text-slate-600 leading-relaxed">HTML, CSS, JavaScript, Tailwind CSS, TypeScript, Fastify, Express, Node.js, Vue.js, React.js, MongoDB, MySQL, Photoshop, Canva, Microsoft Office</p>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-700 mb-2">Soft Skills:</h3>
-                  <p className="text-slate-600 leading-relaxed">Creativity, Negotiation, Critical Thinking, Teamwork</p>
-                </div>
-              </div>
-            </section>
-
-            {/* Languages */}
-            <section>
-              <h2 className="text-2xl font-bold text-slate-800 mb-4 pb-2 border-b-2 border-slate-300">LANGUAGES</h2>
-              <ul className="space-y-2 text-sm">
-                <li className="text-slate-700">
-                  <span className="font-semibold">Khmer</span> — Native
-                </li>
-                <li className="text-slate-700">
-                  <span className="font-semibold">English</span> — Intermediate
-                </li>
-              </ul>
-            </section>
-
-            {/* Hobbies */}
-            <section>
-              <h2 className="text-2xl font-bold text-slate-800 mb-4 pb-2 border-b-2 border-slate-300">HOBBIES</h2>
-              <ul className="space-y-2 text-sm text-slate-700">
-                <li className="flex items-center gap-2">
-                  <Code className="w-4 h-4 text-slate-600" />
-                  Coding
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-4 h-4 text-slate-600">📚</span>
-                  Reading
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-4 h-4 text-slate-600">🎵</span>
-                  Music
-                </li>
-              </ul>
-            </section>
-          </div>
-
-          {/* Right Content */}
-          <div className="col-span-2 p-8 space-y-8">
-            {/* Profile */}
-            <section>
-              <h2 className="text-2xl font-bold text-slate-800 mb-4 pb-2 border-b-2 border-slate-700 flex items-center gap-2">
-                <div className="w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm">👤</span>
-                </div>
-                PROFILE
-              </h2>
-              <p className="text-slate-700 leading-relaxed">
-                IT graduate and web developer with experience in front-end and back-end development. Passionate about creating modern, responsive, and user-focused web applications.
-              </p>
-            </section>
-
-            {/* Work Experience */}
-            <section>
-              <h2 className="text-2xl font-bold text-slate-800 mb-4 pb-2 border-b-2 border-slate-700 flex items-center gap-2">
-                <div className="w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center">
-                  <Briefcase className="w-4 h-4 text-white" />
-                </div>
-                WORK EXPERIENCE
-              </h2>
-              <div className="space-y-4">
-                <div className="relative pl-6 border-l-2 border-slate-300">
-                  <div className="absolute -left-2 top-0 w-4 h-4 bg-slate-800 rounded-full"></div>
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h3 className="text-lg font-bold text-slate-800">IT Khmer Company</h3>
-                      <p className="text-slate-600 font-medium">Web Developer</p>
-                    </div>
-                    <span className="text-sm text-slate-500 font-medium">2024 - PRESENT</span>
-                  </div>
-                  <ul className="space-y-2 text-sm text-slate-700 list-disc list-inside">
-                    <li>Completed a 3-month internship focused on front-end and back-end web development</li>
-                    <li>Promoted to a full-time Web Developer position after demonstrating strong work ethic</li>
-                    <li>Developed responsive websites using HTML, CSS, Tailwind CSS, SCSS, Bootstrap, JavaScript, TypeScript and Vue.js</li>
-                    <li>Integrated back-end functionality using Node.js, Fastify and MySQL</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            {/* Education */}
-            <section>
-              <h2 className="text-2xl font-bold text-slate-800 mb-4 pb-2 border-b-2 border-slate-700 flex items-center gap-2">
-                <div className="w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center">
-                  <GraduationCap className="w-4 h-4 text-white" />
-                </div>
-                EDUCATION
-              </h2>
-              <div className="space-y-4">
-                <div className="relative pl-6 border-l-2 border-slate-300">
-                  <div className="absolute -left-2 top-0 w-4 h-4 bg-slate-800 rounded-full"></div>
-                  <div className="flex justify-between items-start mb-1">
-                    <h3 className="font-bold text-slate-800">Bachelor of Information Technology</h3>
-                    <span className="text-sm text-slate-500 font-medium">2022 - 2025</span>
-                  </div>
-                  <p className="text-sm text-slate-600">Build Bright University — Siem Reap, Cambodia</p>
-                  <p className="text-sm text-slate-500 mt-1">GPA: 3.8 / 4.0</p>
-                </div>
-
-                <div className="relative pl-6 border-l-2 border-slate-300">
-                  <div className="absolute -left-2 top-0 w-4 h-4 bg-slate-600 rounded-full"></div>
-                  <div className="flex justify-between items-start mb-1">
-                    <h3 className="font-bold text-slate-800">Diploma in General Education</h3>
-                    <span className="text-sm text-slate-500 font-medium">2018 - 2021</span>
-                  </div>
-                  <p className="text-sm text-slate-600">Techo Sen Samrong High School — Oddor Meanchey</p>
-                </div>
-
-                <div className="relative pl-6 border-l-2 border-slate-300">
-                  <div className="absolute -left-2 top-0 w-4 h-4 bg-slate-500 rounded-full"></div>
-                  <div className="flex justify-between items-start mb-1">
-                    <h3 className="font-bold text-slate-800">Secondary School Education</h3>
-                    <span className="text-sm text-slate-500 font-medium">2015 - 2018</span>
-                  </div>
-                  <p className="text-sm text-slate-600">Samrong Secondary School — Oddor Meanchey</p>
-                </div>
-
-                <div className="relative pl-6">
-                  <div className="absolute -left-2 top-0 w-4 h-4 bg-slate-400 rounded-full"></div>
-                  <div className="flex justify-between items-start mb-1">
-                    <h3 className="font-bold text-slate-800">Primary School Education</h3>
-                    <span className="text-sm text-slate-500 font-medium">2009 - 2015</span>
-                  </div>
-                  <p className="text-sm text-slate-600">Donkern Phneat Primary School— Oddor Meanchey</p>
-                </div>
-              </div>
-            </section>
-          </div>
+      {/* Contact */}
+      <div>
+        <SideLabel>Contact</SideLabel>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          {[
+            { label: "Phone", value: contact.phone },
+            { label: "Email", value: contact.email },
+            { label: "Address", value: contact.address },
+          ].map(({ label, value }) => (
+            <div key={label} style={{ display: "flex", flexDirection: "column", gap: 1 }}>
+              <span style={{ fontSize: 8, color: "#555", textTransform: "uppercase", letterSpacing: "0.08em" }}>{label}</span>
+              <span style={{ fontSize: 10, color: "#c0beb8", lineHeight: 1.4, wordBreak: "break-word" }}>{value}</span>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+
+      <Divider />
+
+      {/* Tech Stack */}
+      <div>
+        <SideLabel>Tech Stack</SideLabel>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+          {techStack.map((t) => (
+            <span key={t} style={{ fontSize: 8.5, padding: "2px 6px", borderRadius: 3, background: "#1a1a1c", border: "0.5px solid #2e2e30", color: "#999" }}>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <Divider />
+
+      {/* Soft Skills */}
+      <div>
+        <SideLabel>Soft Skills</SideLabel>
+        <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+          {softSkills.map((s) => (
+            <span key={s} style={{ fontSize: 10, color: "#a0a09a", paddingLeft: 10, position: "relative" }}>
+              <span style={{ position: "absolute", left: 0, color: "#555" }}>·</span>
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <Divider />
+
+      {/* Languages */}
+      <div>
+        <SideLabel>Languages</SideLabel>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {languages.map((lang) => (
+            <div key={lang.name} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <span style={{ fontSize: 11, color: "#c0beb8" }}>{lang.name}</span>
+              <span style={{ fontSize: 8.5, color: "#555" }}>{lang.level}</span>
+              <LangDots filled={lang.dots} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </aside>
   );
-}
+};
+
+// ─── Main Panel ───────────────────────────────────────────
+const SectionHeader: React.FC<{ label: string }> = ({ label }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+    <span style={{ fontSize: 8.5, letterSpacing: "0.15em", textTransform: "uppercase", color: "#bbb", whiteSpace: "nowrap", fontWeight: 600 }}>
+      {label}
+    </span>
+    <div style={{ flex: 1, height: 0.5, background: "#eee" }} />
+  </div>
+);
+
+const MainPanel: React.FC = () => {
+  const { name, subtitle, tags, profile, experience, education } = CV_DATA;
+
+  return (
+    <main style={{ background: "#fff", padding: "28px 28px 28px 32px", display: "flex", flexDirection: "column", gap: 20 }}>
+      {/* Header */}
+      <div style={{ paddingBottom: 16, borderBottom: "0.5px solid #e5e5e5" }}>
+        <h1 style={{ fontSize: 28, fontWeight: 700, color: "#111", letterSpacing: "-0.04em", lineHeight: 1.05 }}>
+          {name.first} <span style={{ fontWeight: 300, color: "#bbb" }}>/</span> {name.last}
+        </h1>
+        <p style={{ fontSize: 11, color: "#888", marginTop: 5 }}>{subtitle}</p>
+        <div style={{ display: "flex", gap: 5, marginTop: 10, flexWrap: "wrap" }}>
+          {tags.map((tag) => (
+            <span key={tag} style={{ fontSize: 9, padding: "2px 9px", borderRadius: 100, border: "0.5px solid #ddd", color: "#888" }}>
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Profile */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <SectionHeader label="Profile" />
+        <p style={{ fontSize: 11.5, lineHeight: 1.75, color: "#555" }}>{profile}</p>
+      </div>
+
+      {/* Experience */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <SectionHeader label="Work Experience" />
+        {experience.map((exp) => (
+          <div key={exp.role} style={{ display: "flex", gap: 12 }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 3 }}>
+              <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#111", flexShrink: 0 }} />
+              <div style={{ width: 1, flex: 1, background: "#eee", marginTop: 5 }} />
+            </div>
+            <div style={{ flex: 1, paddingBottom: 14 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#111" }}>{exp.role}</span>
+                <span style={{ fontSize: 9, color: "#bbb", whiteSpace: "nowrap" }}>{exp.period}</span>
+              </div>
+              <div style={{ fontSize: 11, color: "#888", marginBottom: 6 }}>{exp.company}</div>
+              {exp.bullets.map((b, i) => (
+                <div key={i} style={{ fontSize: 10.5, color: "#666", lineHeight: 1.6, paddingLeft: 10, position: "relative", marginBottom: 3 }}>
+                  <span style={{ position: "absolute", left: 0, color: "#ccc" }}>–</span>
+                  {b}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Education */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <SectionHeader label="Education" />
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          {education.map((edu) => (
+            <div
+              key={edu.degree}
+              style={{
+                display: "flex", justifyContent: "space-between", alignItems: "flex-start",
+                padding: "9px 12px", border: "0.5px solid #eee", borderRadius: 6, background: "#fafafa",
+              }}
+            >
+              <div>
+                <div style={{ fontSize: 11.5, fontWeight: 600, color: "#111" }}>{edu.degree}</div>
+                <div style={{ fontSize: 10, color: "#888", marginTop: 2 }}>{edu.school}</div>
+              </div>
+              <div style={{ fontSize: 9, color: "#bbb", whiteSpace: "nowrap", marginTop: 2, textAlign: "right" }}>{edu.year}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
+  );
+};
+
+// ─── Root ─────────────────────────────────────────────────
+const CVPage: React.FC = () => (
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "220px 1fr",
+      minHeight: "100vh",
+      fontFamily: "'DM Sans', Arial, sans-serif",
+      border: "0.5px solid #e5e5e5",
+      borderRadius: 12,
+      overflow: "hidden",
+    }}
+  >
+    <Sidebar />
+    <MainPanel />
+  </div>
+);
+
+export default CVPage;

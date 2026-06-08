@@ -45,6 +45,27 @@ const experiences = [
     icon: "💼",
     accent: "#22d3ee",
   },
+  {
+  id: 3,
+  title: "Family Business Assistant",
+  company: "Family Business",
+  type: "Work Experience",
+  period: "2022 – 2023",
+  description:
+    "Assisted in daily business operations and provided customer service to ensure smooth workflows.",
+  bullets: [
+    "Assisted with customer service and daily business operations",
+    "Communicated with customers and helped respond to their needs",
+    "Supported payment handling and basic business coordination",
+  ],
+  skills: [
+    "Customer Service",
+    "Communication",
+    "Business Coordination",
+  ],
+  icon: "💼",
+  accent: "#f59e0b", // ដូរពណ៌ទៅជាពណ៌លឿងទុំ (Amber/Gold) ឱ្យត្រូវនឹងទម្រង់ Work Experience
+},
 ];
 
 export default function Experience() {
@@ -204,7 +225,7 @@ export default function Experience() {
                         <div className="mt-1 flex items-center gap-2">
                           <span
                             className="text-sm font-semibold"
-                            style={{ color: exp.accent,  }}
+                            style={{ color: exp.accent }}
                           >
                             {exp.company}
                           </span>
@@ -213,7 +234,7 @@ export default function Experience() {
                             style={{
                               background: exp.accent + "18",
                               color: exp.accent,
-                              
+
                               border: `1px solid ${exp.accent}33`,
                             }}
                           >
@@ -224,8 +245,11 @@ export default function Experience() {
 
                       <div
                         className="flex items-center gap-2 text-xs"
-                        style={{ color: "#ffffff66", fontFamily:"JetBrains Mono, Fira Code, monospace", fontWeight:600
-                           }}
+                        style={{
+                          color: "#ffffff66",
+                          fontFamily: "JetBrains Mono, Fira Code, monospace",
+                          fontWeight: 600,
+                        }}
                       >
                         <span>📅</span>
                         <span style={{ color: "#6b7280" }}>{exp.period}</span>
@@ -235,7 +259,7 @@ export default function Experience() {
                     {/* Description */}
                     <p
                       className="mt-4 text-sm leading-relaxed"
-                      style={{ color: "#ffffff66", }}
+                      style={{ color: "#ffffff66" }}
                     >
                       {exp.description}
                     </p>
@@ -277,10 +301,11 @@ export default function Experience() {
                           key={skill}
                           className="rounded-md px-3 py-1 text-xs font-medium"
                           style={{
-                             background:"#111827",
+                            background: "#111827",
                             color: "#ffffff66",
                             border: "1px solid #2a2a40",
-                            fontFamily:"'JetBrains Mono', Fira Code, monospace"
+                            fontFamily:
+                              "'JetBrains Mono', Fira Code, monospace",
                           }}
                         >
                           {skill}
@@ -292,7 +317,10 @@ export default function Experience() {
                     <div className="mt-4 flex justify-end">
                       <span
                         className="text-xs transition-all duration-300"
-                        style={{ color: exp.accent + "88", fontFamily:"'JetBrains Mono', Fira Code, monospace" }}
+                        style={{
+                          color: exp.accent + "88",
+                          fontFamily: "'JetBrains Mono', Fira Code, monospace",
+                        }}
                       >
                         {isActive ? "▲ Collapse" : "▼ Show details"}
                       </span>
