@@ -40,7 +40,7 @@ const projects: Project[] = [
     title: "E-Shop",
     subtitle: "E-Commerce Platform",
     description:
-      "A scalable e-commerce platform with secure authentication, real-time stock management, and a built-in admin dashboard.",
+      "A scalable e-commerce platform with secure authentication, real-time stock management",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Clerk Auth", "Dummy API"],
     highlights: [
       "Secure user authentication using Clerk",
@@ -53,26 +53,26 @@ const projects: Project[] = [
     category: "Web",
     featured: true,
   },
-  {
-    id: 3,
-    title: "CineView",
-    subtitle: "Movie Discovery App",
-    description:
-      "A movie discovery app where users can browse trending films, search titles, and manage favorites and watchlists.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "DaisyUI", "TMDB API"],
-    highlights: [
-      "Integrated TMDB API for dynamic content",
-      "Favorite & watchlist features",
-    ],
-    image: Image.movie1,
-    images: [Image.movie1, Image.movie2, Image.movie3],
-    code: "https://github.com/leuy-llm/Movie",
-    category: "Web",
-  },
+  // {
+  //   id: 3,
+  //   title: "CineView",
+  //   subtitle: "Movie Discovery App",
+  //   description:
+  //     "A movie discovery app where users can browse trending films, search titles, and manage favorites and watchlists.",
+  //   technologies: ["React", "TypeScript", "Tailwind CSS", "DaisyUI", "TMDB API"],
+  //   highlights: [
+  //     "Integrated TMDB API for dynamic content",
+  //     "Favorite & watchlist features",
+  //   ],
+  //   image: Image.movie1,
+  //   images: [Image.movie1, Image.movie2, Image.movie3],
+  //   code: "https://github.com/leuy-llm/Movie",
+  //   category: "Web",
+  // },
   {
     id: 4,
-    title: "TastyHub",
-    subtitle: "Recipe Finder App",
+    title: "Recipe Finder",
+    subtitle: "",
     description:
       "A recipe search platform to find meals by ingredients, powered by TheMealDB API with clean filters and step-by-step instructions.",
     technologies: ["Vue", "Vite", "TypeScript", "Tailwind CSS", "MealDB API"],

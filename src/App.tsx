@@ -8,6 +8,7 @@ import Project from "./components/Project";
 import Contact from "./components/Contact";
 import Skill from "./components/Skill";
 import Experience from "./components/Experience";
+import Certifications from "./components/Certification";
 
 function App() {
   return (

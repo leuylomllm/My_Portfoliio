@@ -6,7 +6,7 @@ const experiences = [
     title: "Web Developer Intern",
     company: "IT Khmer Company",
     type: "Internship",
-    period: "2024 (2 months)",
+    period: "2024 (3 months)",
     description:
       "Started as a Web Developer Intern, focusing on frontend development and learning modern web technologies in a real project environment.",
     bullets: [
@@ -28,7 +28,7 @@ const experiences = [
       "Promoted to Full-Time Web Developer due to strong performance and contribution during internship.",
     bullets: [
       "Developed responsive and user-friendly web interfaces using Vue.js, TypeScript, Tailwind CSS, SCSS, PrimeVue, and PrimeFlex",
-      "Built and integrated RESTful APIs using Node.js, Fastify, and MySQL",
+      "Built and integrated RESTful APIs",
       "Improved system performance, scalability, and maintainability",
       "Worked closely with team members to deliver production-ready applications",
     ],

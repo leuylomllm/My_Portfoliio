@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Me from "../assets/elipe.png";
-import LomLeuyPDF from "../assets/Lom Leuy.pdf";
+import LomLeuyPDF from "../assets/resume3.pdf";
 import ReactDOMServer from "react-dom/server";
 
 const ROLES = ["Web Developer.", "IT Graduate.", "Problem Solver."];
@@ -16,7 +16,7 @@ const HeroSection = () => {
 const downloadResume = () => {
   const link = document.createElement("a");
   link.href = LomLeuyPDF;
-  link.download = "Lom Leuy.pdf";
+  link.download = "resume3.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

@@ -58,8 +58,8 @@ const allSkills = [
   { name: "MySQL",       icon: <SiMysql />,        color: "#3B82F6", category: "Backend",   level: "Beginner" },
   // Tools
   { name: "Adobe Photoshop",      icon: <SiAdobephotoshop size={16} />,          color: "#FB923C", category: "Tools",     level: "Intermediate" },
-   { name: "Canva",     icon: <SiCanva />,      color: "#818CF8", category: "Tools",     level: "Intermediate" },
-   { name: "CapCut",     icon: <FaRegFileImage  />,      color: "#FB923C", category: "Tools",     level: "Beginner" },
+  //  { name: "Canva",     icon: <SiCanva />,      color: "#818CF8", category: "Tools",     level: "Intermediate" },
+  //  { name: "CapCut",     icon: <FaRegFileImage  />,      color: "#FB923C", category: "Tools",     level: "Beginner" },
   // { name: "Windsurf",    icon: <Cloud size={16}/>, color: "#38BDF8", category: "Tools",     level: "Beginner" },
   // Office
   { name: "MS Word",     icon: <PiMicrosoftWordLogoFill />,       color: "#2563EB", category: "Office", level: "Intermediate" },
